@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nutricion parenteral</title>
+	<meta charset="utf-8">
+	<meta name="Author" content="Juan Sepulveda">
+	<meta name="keywords" content="Nutricion parenteral, hospital, pediatria, unidad de cuidados intensivos, neonatologia">
+	<meta name="description" content="Proyecto de receta automatizada web de nutricion parenteral pediatrica">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="">
+	<!-- <script type="text/javascript" src="myscripts.js"></script> -->
+</head>
+<body>
+	<div id="encabezado"></div>
+	<div id="formulario">
+		<form>
+			<label for="unidad">Unidad</label>
+			<input list="Unidades" name="Unidad" id="unidad" size="18" required>
+				<datalist id="Unidades">
+					<option>Cirugía Infantil</option>
+					<option>Neonatología</option>
+					<option>Pediatría</option>
+					<option>UCI Pediátrica</option>
+				</datalist>
+			<label for="cama">Cama</label>
+			<input type="text" name="Cama" id="cama" size="6">
+			<label for="anexo">Anexo</label>
+			<input type="tel" name="Anexo" id="anexo" size="8"><br>
+			<label for="nombres">Nombres</label>
+			<input type="text" name="Nombres" id="nombres" size="30">
+			<label for="appater">Apellido paterno</label>
+			<input type="text" name="Apellido Paterno" id="appater" size="20">
+			<label for="apmater">Apellido materno</label>
+			<input type="text" name="Apellido Materno" id="apmater" size="20"><br>
+			<label for="fechanacimiento">Fecha de nacimiento</label>
+			<input type="date" name="fecha de nacimiento" id="fechanacimiento" value="1979-10-22">
+			<label for="run">RUN</label>
+			<input type="text" name="RUN" id="run" pattern="([0-9]).{8}-([0-9][k,K]).{1}" size="10">
+			<br>
+			<label for="edad">Edad</label>
+			<!-- <input type="text" name="Edad" id="edad"> -->
+			<span id="edad"></span>
+			<label for="fechaactual">Fecha actual</label>
+			<input type="date" name="Fecha Actual" id="fechaactual" onchange="calcEdad()" value="2020-06-22"><br>
+			<label for="peso">Peso</label>
+			<input type="number" name="Peso" id="peso" size="8">
+			<label for="talla">Talla</label>
+			<input type="number" name="Talla" id="talla" size="8">
+			<label for="sexo">Sexo</label>
+			<label for="Masculino">Masculino</label>
+			<input type="radio" name="Sexo" value="Masculino">
+			<label for="Femenino">Femenino</label>
+			<input type="radio" name="Sexo" value="Femenino">
+			<label for="Otro">Otro</label>
+			<input type="radio" name="Sexo" value="Otro">
+			<label for="sc">Superficie corporal</label>
+			<input type="number" name="Superficie Corporal" id="sc" size="5">
+			<label for="voldes">Volumen deseado</label>
+			<input type="number" name="Volumen deseado" id="voldes" size="5" min="0">
+			<label for="cg">Carga de glucosa</label>
+			<input type="number" name="Carga Glucosa" id="cg" size="5" step="0.1" min="0">
+			<label for="proteinas">Proteínas</label>
+			<input type="number" name="Proteinas" id="proteinas" size="5" step="0.1" min="0">
+			<label for="lipidos">Lípidos</label>
+			<input type="number" name="Lipidos" id="lipidos" size="5" step="0.1" min="0">
+			<label for="na">Sodio</label>
+			<input type="number" name="Sodio" id="na" size="5" step="0.1" min="0">
+			<label for="acna">Acetato</label>
+			<input type="number" name="Acetato" id="acna" size="5" step="0.1" min="0">
+			<label for="k">Potasio</label>
+			<input type="number" name="Potasio" id="k" size="5" step="0.1" min="0">
+			<label for="po">Fosfato</label>
+			<input type="number" name="Fosfato" id="po" size="5" step="0.1" min="0">
+			<label for="ca">Calcio</label>
+			<input type="number" name="Calcio" id="ca" size="5" step="0.1" min="0">
+			<label for="mg">Magnesio</label>
+			<input type="number" name="Magnesio" id="mg" size="5" step="0.1" min="0">
+			<label for="zn">Zinc</label>
+			<input type="number" name="Zinc" id="zn" size="5" step="0.01" min="0">
+			<label for="vits">Vitaminas</label>
+			<input list="decision" name="Vitaminas" id="vits" size="4">
+			<label for="oe">Oligoelementos</label>
+			<input list="decision" name="Oligoelementos" id="oe" size="4">
+			<label for="ciclado">Ciclado</label>
+			<input list="decision" name="Ciclado" id="ciclado" size="4">
+				<datalist id="decision">
+					<option>Si</option>
+					<option>No</option>
+				</datalist>
+			<input type="reset" name="Restablecer">
+			<input type="submit" name="Enviar">
+		</form>
+	</div>
+	<button onclick="calcEdad()">Calcular edad</button>
+	<div>
+		<p id="demofecha1"></p>
+		<p id="demofecha2"></p>
+	</div>
+	<!-- <script type="text/javascript">
+		var df1 = new Date(document.getElementById("fechaactual").value);
+		var df2 = new Date(document.getElementById("fechanacimiento").value);
+		var edadms = df1-df2;
+		var edadDias = edadms / 86400000;
+		var edadMes = edadDias / 30.2;
+		var edadAnos = (edadDias / 365);
+			edadAnos.toPrecision(3);
+		console.log(df1, df2, edadms);
+		
+		document.getElementById("demofecha1").innerHTML=df1;
+		document.getElementById("edad").innerHTML = edadAnos.toPrecision(3) + " años";
+	</script> -->
+	<script type="text/javascript">
+		var fechaActual = new Date(document.getElementById("fechaactual").value);
+		var fechaNacimiento = new Date(document.getElementById("fechanacimiento").value);
+		
+		function calcEdad(){
+			var edadms = fechaActual - fechaNacimiento;
+			var edadDias = edadms / 86400000;
+            var edadMes, edadAnos;
+            return edadDias;
+			if edadDias < 30 {
+				document.getElementById("edad").innerHTML = edadDias + " días";
+			} else if (edadDias >=30 && edadDias < 365) {
+				edadMes = edadDias / 30;
+				document.getElementById("edad").innerHTML = edadMes.toPrecision(2) + " meses";
+			} else {
+				edadAnos = edadDias / 365;
+				document.getElementById("edad").innerHTML = edadAnos.toPrecision(3) + " años";
+			}
+
+			/*switch(edadDias){
+			case (edadDias<30):
+			document.getElementById("edad").innerHTML = edadDias + " días";
+			break;
+			case ((edadDias>=30) && (edadDias<365)):
+			var edadMes = edadDias / 30.2;
+			document.getElementById("edad").innerHTML = edadMes.toPrecision(2) + " meses";
+			break;
+			case (edadDias >= 365):
+			var edadAnos = edadDias /365;
+			document.getElementById("edad").innerHTML = edadAnos.toPrecision(3) + " años";
+			break
+			default:
+			document.getElementById('edad').innerHTML = "jajaja";
+			}*/
+		}
+	</script>
+	<footer>
+		<pre>
+			Juan Sepúlveda
+			Derechos reservados
+			Sólo para fines educativos y de prueba.
+			No para uso clínico, aún.
+		</pre>
+	</footer>
+</body>
+</html>

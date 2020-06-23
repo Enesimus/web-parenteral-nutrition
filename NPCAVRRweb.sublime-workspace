@@ -1,0 +1,525 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"edad",
+				"edadDias"
+			],
+			[
+				"if",
+				"ife\tif … else"
+			],
+			[
+				"s",
+				"span\tTag"
+			],
+			[
+				"df",
+				"df2"
+			],
+			[
+				"demo",
+				"demofecha2"
+			],
+			[
+				"fechana",
+				"fechanacimiento"
+			],
+			[
+				"fec",
+				"fechaactual"
+			],
+			[
+				"fech",
+				"fechanacimiento"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"Fe",
+				"fechaNacimiento"
+			],
+			[
+				"ge",
+				"getElementById"
+			],
+			[
+				"l",
+				"link\tTag"
+			],
+			[
+				"i",
+				"innerHTML"
+			],
+			[
+				"g",
+				"getElementById"
+			],
+			[
+				"fe",
+				"fechaNacimiento"
+			],
+			[
+				"spe",
+				"step\tAttr"
+			],
+			[
+				"re",
+				"required\tAttr"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"dat",
+				"datalist\tTag"
+			],
+			[
+				"po",
+				"po"
+			],
+			[
+				"fecha",
+				"fechaactual"
+			],
+			[
+				"t",
+				"text"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"f",
+				"form\tTag"
+			],
+			[
+				"me",
+				"meta\tTag"
+			],
+			[
+				"borderc",
+				"border-collapse\tproperty"
+			],
+			[
+				"fo",
+				"footer\tTag"
+			],
+			[
+				"border",
+				"border-bottom-width\tproperty"
+			],
+			[
+				"ba",
+				"background-color\tproperty"
+			],
+			[
+				"bor",
+				"border-style\tproperty"
+			],
+			[
+				"h",
+				"html\thtml"
+			],
+			[
+				"te",
+				"text-align\tproperty"
+			],
+			[
+				"A",
+				"Anexos"
+			],
+			[
+				"Reg",
+				"RegistroCambios"
+			],
+			[
+				"M",
+				"Metodologias"
+			],
+			[
+				"Do",
+				"DocumentosReferencia"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"backgroun",
+				"background-color\tproperty"
+			],
+			[
+				"back",
+				"background-size\tproperty"
+			],
+			[
+				"do",
+				"double\tborder-style"
+			],
+			[
+				"border-s",
+				"border-style\tproperty"
+			],
+			[
+				"al",
+				"alt\tAttr"
+			],
+			[
+				"font",
+				"font-family\tproperty"
+			],
+			[
+				"tex",
+				"text-align\tproperty"
+			],
+			[
+				"hea",
+				"header\tTag"
+			],
+			[
+				"fot",
+				"font-family\tproperty"
+			],
+			[
+				"u",
+				"ul\tTag"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"ca",
+				"caption\tTag"
+			],
+			[
+				"m",
+				"meta\tTag"
+			],
+			[
+				"pro",
+				"promedio"
+			],
+			[
+				"not",
+				"notasLenguaje"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"letr",
+				"letrasincognitas"
+			],
+			[
+				"letra",
+				"letraingresada"
+			],
+			[
+				"pala",
+				"palabraincognita"
+			],
+			[
+				"pa",
+				"palabraincognita"
+			],
+			[
+				"for",
+				"for\tfor (…) {…}"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 6427,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!-- \nVariable\t\t\tTipo\tRequerida\tOrigen\tObservaciones\nUnidad\t\t\t\tTexto\tSi\t\t\tLista\tLista Servicio\nCama\t\t\t\tTexto\tSi\t\t\tLista\t\nAnexo\t\t\t\tNúmero\tSi\t\t\tLista\tLista Servicio\nNombres\t\t\t\tTexto\tSi\t\t\tIngresar\t\nApellido Paterno\tTexto\tSi\t\t\tIngresar\t\nApellido Materno\tTexto\tSi\t\t\tIngresar\t\nFecha de Nacimiento\tFecha\tSi\t\t\tIngresar\t\nRUN\t\t\t\t\tTexto\tSi\t\t\tIngresar\t\nEdad\t\t\t\tNúmero\tSi\t\t\tCalculada\t\nFecha actual\t\tFecha\tSi\t\t\tAutotexto\t\nPeso\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nTalla\t\t\t\tNúmero\tNo\t\t\tIngresar\t\nSexo\t\t\t\tTexto\tSi\t\t\tLista\tLista Sexo\nSuperficie corporal\tNúmero\tSi\t\t\tCalculada\t\nVolumen deseado\t\tNúmero\tSi\t\t\tIngresar\t\nCarga de glucosa\tNúmero\tSi\t\t\tIngresar\t\nProteínas\t\t\tNúmero\tSi\t\t\tIngresar\t\nLípidos\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nSodio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nAcetato\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nPotasio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nFosfato\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nCalcio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nMagnesio\t\t\tNúmero\tSi\t\t\tIngresar\t\nZinc\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nVitaminas\t\t\tSi/No\tSi\t\t\tIngresar\t\nOligoelementos\t\tSi/No\tSi\t\t\tIngresar\t\nCiclado\t\t\t\tSi/No\tSi\t\t\tIngresar\t\nHoras Suspension\tNúmero\tNo\t\t\tIngresar\t \n\t-->\n",
+			"settings":
+			{
+				"buffer_size": 1065,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 203.0,
+		"history":
+		[
+			"curso.length",
+			"curso"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/NPCAVRRweb.sublime-project",
+		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/myscripts.js",
+		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/index.html",
+		"/Users/juansepulveda/Desktop/holamundo.py",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/TRRC_protocolo.sublime-project",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/css/estilotabla.css",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/RecomendacionAccesoVasc.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/Protocolo_TRRC_UCIP.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/metodologia.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/recursos.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/anexos.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/RecomendacionAccesoVasc.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/regcambios.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/objetivos.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/css/estiloprotocolo.css",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/alcance.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/responsabilidades.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/definiciones.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/html/docref.html",
+		"/Users/juansepulveda/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/juansepulveda/Documents/Proyectos personales/Mozilla Firefox Developer/Página de prueba/basic.css",
+		"/Users/juansepulveda/Documents/Proyectos personales/Mozilla Firefox Developer/Página de prueba/muebleria.html",
+		"/Users/juansepulveda/Documents/Proyectos personales/Mozilla Firefox Developer/Página de prueba/index.html",
+		"/Users/juansepulveda/Documents/Formatos SAC/plantillasvarias.html",
+		"/Users/juansepulveda/Documents/Formatos SAC/ResumenExamenes/datoscrudosdeexamenes.txt",
+		"/Users/juansepulveda/Documents/Formatos SAC/Evolucion medica.html",
+		"/Users/juansepulveda/Documents/Formatos SAC/ResumenExamenes/resumenform.html",
+		"/Users/juansepulveda/Documents/Formatos SAC/untitled.html",
+		"/Users/juansepulveda/Documents/Formatos SAC/IngresoMedico/ingreso_ucip_home.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Proyectos/curso.js",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 2/Programas/JQUERYcambiatitulo.html",
+		"/Users/juansepulveda/Downloads/PR1JS2S2.html",
+		"/Users/juansepulveda/Desktop/Ingreso UCI Pediatrica.html",
+		"/Users/juansepulveda/Downloads/PR3JS2S1 (1).zip",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/Ahorcado.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/untitled.js",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/For.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/ifthenelse.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/nombreyapellido.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/con_conexiones.html",
+		"/Users/juansepulveda/Documents/Jovenes Programadores/JavaScript 1/Programas/primerapagina.html",
+		"/Users/juansepulveda/Downloads/sublimetext_spanish-master 2/README.md",
+		"/Users/juansepulveda/Downloads/sublimetext_spanish-master 2/Default/Side Bar Mount Point.sublime-menu",
+		"/Users/juansepulveda/Desktop/index1.html",
+		"/Users/juansepulveda/Desktop/untitled.html",
+		"/Users/juansepulveda/Downloads/LedControlMS/LedControlMS.h",
+		"/Users/juansepulveda/Downloads/LED/LED.h",
+		"/private/var/folders/54/ns8by9591qg_qzqcn672_vbr0000gn/T/com.microsoft.Excel/Reparar resultado para Registro factores de riesgo IAAS modificado 2018 UCIPED0.xml"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": true,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6390,
+								6390
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1064,
+								1064
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 30.0
+	},
+	"pinned_build_system": "",
+	"project": "NPCAVRRweb.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 286.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
