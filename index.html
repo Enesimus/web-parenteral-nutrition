@@ -11,9 +11,12 @@
 	<!-- <script type="text/javascript" src="myscripts.js"></script> -->
 </head>
 <body>
-	<div id="encabezado"></div>
+	<div id="encabezado">
+		<h1>Nutricion Parenteral</h1>
+	</div>
 	<div id="formulario">
 		<form>
+			<div>
 			<label for="unidad">Unidad</label>
 			<input list="Unidades" name="Unidad" id="unidad" size="18" required>
 				<datalist id="Unidades">
@@ -25,7 +28,8 @@
 			<label for="cama">Cama</label>
 			<input type="text" name="Cama" id="cama" size="6">
 			<label for="anexo">Anexo</label>
-			<input type="tel" name="Anexo" id="anexo" size="8"><br>
+			<input type="tel" name="Anexo" id="anexo" size="8">
+			</div>
 			<label for="nombres">Nombres</label>
 			<input type="text" name="Nombres" id="nombres" size="30">
 			<label for="appater">Apellido paterno</label>
@@ -113,7 +117,7 @@
 		var fechaActual = new Date(document.getElementById("fechaactual").value);
 		var fechaNacimiento = new Date(document.getElementById("fechanacimiento").value);
 		
-		function calcEdad(){
+		function calcEdad(fechaActual,fechaNacimiento){
 			var edadms = fechaActual - fechaNacimiento;
 			var edadDias = edadms / 86400000;
             var edadMes, edadAnos;
@@ -122,9 +126,11 @@
 				document.getElementById("edad").innerHTML = edadDias + " días";
 			} else if (edadDias >=30 && edadDias < 365) {
 				edadMes = edadDias / 30;
+				return edadMes;
 				document.getElementById("edad").innerHTML = edadMes.toPrecision(2) + " meses";
 			} else {
 				edadAnos = edadDias / 365;
+				return edadAnos
 				document.getElementById("edad").innerHTML = edadAnos.toPrecision(3) + " años";
 			}
 
