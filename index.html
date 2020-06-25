@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-CL">
 <head>
 	<title>Nutricion parenteral</title>
 	<meta charset="utf-8">
@@ -7,9 +7,9 @@
 	<!-- <meta name="keywords" content="Nutricion parenteral, hospital, pediatria, unidad de cuidados intensivos, neonatologia">-->
 	<meta name="description" content="Proyecto de receta automatizada web de nutricion parenteral pediatrica">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="">
+	<link rel="stylesheet" href="">
 	<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
-	<style type="text/css">
+	<style>
 		body {
 			font-family: 'Oxygen', sans-serif;
 			background-color: #ffeb99;
@@ -71,44 +71,44 @@
 			</div>
 			<div class="infopaciente">
 				<label for="peso">Peso</label>
-				<input type="number" name="Peso" id="peso" size="8" min="0.4" max="150" step="0.1"><span>kg</span>
+				<input type="number" name="Peso" id="peso" min="0.4" max="150" step="0.1"><span>kg</span>
 				<label for="talla">Talla</label>
-				<input type="number" name="Talla" id="talla" size="8" min="0.25" max="2.30" step="0.01"><span>cm</span>
+				<input type="number" name="Talla" id="talla" min="0.25" max="2.30" step="0.01"><span>cm</span>
 				<label for="sc">Superficie corporal</label>
-				<input type="number" name="Superficie Corporal" id="sc" size="5" min="0.1" max="2"><span>m<sup>2</sup></span>
+				<input type="number" name="Superficie Corporal" id="sc" min="0.1" max="2"><span>m<sup>2</sup></span>
 			</div>
 			<div class="infopaciente">
 				<label for="sexo">Sexo</label>
 				<label for="Masculino">Masculino</label>
-				<input type="radio" name="Sexo" value="Masculino">
+				<input type="radio" name="Sexo" value="Masculino" id="Masculino">
 				<label for="Femenino">Femenino</label>
-				<input type="radio" name="Sexo" value="Femenino">
+				<input type="radio" name="Sexo" value="Femenino" id="Femenino">
 				<label for="Otro">Otro</label>
-				<input type="radio" name="Sexo" value="Otro">
+				<input type="radio" name="Sexo" value="Otro" id="Otro">
 			</div>
 			<div id="prescripcion">
 				<label for="voldes">Volumen deseado</label>
-				<input type="number" name="Volumen deseado" id="voldes" size="5" min="0" max="2500">
+				<input type="number" name="Volumen deseado" id="voldes" min="0" max="2500">
 				<label for="cg">Carga de glucosa</label>
-				<input type="number" name="Carga Glucosa" id="cg" size="5" step="0.1" min="0" max="15">
+				<input type="number" name="Carga Glucosa" id="cg" step="0.1" min="0" max="15">
 				<label for="proteinas">Proteínas</label>
-				<input type="number" name="Proteinas" id="proteinas" size="5" step="0.1" min="0" max="5">
+				<input type="number" name="Proteinas" id="proteinas" step="0.1" min="0" max="5">
 				<label for="lipidos">Lípidos</label>
-				<input type="number" name="Lipidos" id="lipidos" size="5" step="0.1" min="0" max="10">
+				<input type="number" name="Lipidos" id="lipidos" step="0.1" min="0" max="10">
 				<label for="na">Sodio</label>
-				<input type="number" name="Sodio" id="na" size="5" step="0.1" min="0" max="10">
+				<input type="number" name="Sodio" id="na" step="0.1" min="0" max="10">
 				<label for="acna">Acetato</label>
-				<input type="number" name="Acetato" id="acna" size="5" step="0.1" min="0" max="5">
+				<input type="number" name="Acetato" id="acna" step="0.1" min="0" max="5">
 				<label for="k">Potasio</label>
-				<input type="number" name="Potasio" id="k" size="5" step="0.1" min="0" max="10">
+				<input type="number" name="Potasio" id="k" step="0.1" min="0" max="10">
 				<label for="po">Fosfato</label>
-				<input type="number" name="Fosfato" id="po" size="5" step="0.1" min="0" max="5">
+				<input type="number" name="Fosfato" id="po" step="0.1" min="0" max="5">
 				<label for="ca">Calcio</label>
-				<input type="number" name="Calcio" id="ca" size="5" step="0.1" min="0" max="15">
+				<input type="number" name="Calcio" id="ca" step="0.1" min="0" max="15">
 				<label for="mg">Magnesio</label>
-				<input type="number" name="Magnesio" id="mg" size="5" step="0.1" min="0" max="1">
+				<input type="number" name="Magnesio" id="mg" step="0.1" min="0" max="1">
 				<label for="zn">Zinc</label>
-				<input type="number" name="Zinc" id="zn" size="5" step="0.01" min="0" max="1">
+				<input type="number" name="Zinc" id="zn" step="0.01" min="0" max="1">
 				<label for="vits">Vitaminas</label>
 				<input list="decision" name="Vitaminas" id="vits" size="4">
 				<label for="oe">Oligoelementos</label>
