@@ -239,23 +239,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 6427,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "<!-- \nVariable\t\t\tTipo\tRequerida\tOrigen\tObservaciones\nUnidad\t\t\t\tTexto\tSi\t\t\tLista\tLista Servicio\nCama\t\t\t\tTexto\tSi\t\t\tLista\t\nAnexo\t\t\t\tNúmero\tSi\t\t\tLista\tLista Servicio\nNombres\t\t\t\tTexto\tSi\t\t\tIngresar\t\nApellido Paterno\tTexto\tSi\t\t\tIngresar\t\nApellido Materno\tTexto\tSi\t\t\tIngresar\t\nFecha de Nacimiento\tFecha\tSi\t\t\tIngresar\t\nRUN\t\t\t\t\tTexto\tSi\t\t\tIngresar\t\nEdad\t\t\t\tNúmero\tSi\t\t\tCalculada\t\nFecha actual\t\tFecha\tSi\t\t\tAutotexto\t\nPeso\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nTalla\t\t\t\tNúmero\tNo\t\t\tIngresar\t\nSexo\t\t\t\tTexto\tSi\t\t\tLista\tLista Sexo\nSuperficie corporal\tNúmero\tSi\t\t\tCalculada\t\nVolumen deseado\t\tNúmero\tSi\t\t\tIngresar\t\nCarga de glucosa\tNúmero\tSi\t\t\tIngresar\t\nProteínas\t\t\tNúmero\tSi\t\t\tIngresar\t\nLípidos\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nSodio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nAcetato\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nPotasio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nFosfato\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nCalcio\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nMagnesio\t\t\tNúmero\tSi\t\t\tIngresar\t\nZinc\t\t\t\tNúmero\tSi\t\t\tIngresar\t\nVitaminas\t\t\tSi/No\tSi\t\t\tIngresar\t\nOligoelementos\t\tSi/No\tSi\t\t\tIngresar\t\nCiclado\t\t\t\tSi/No\tSi\t\t\tIngresar\t\nHoras Suspension\tNúmero\tNo\t\t\tIngresar\t \n\t-->\n",
-			"settings":
-			{
-				"buffer_size": 1065,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -291,8 +274,10 @@
 	},
 	"file_history":
 	[
-		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/NPCAVRRweb.sublime-project",
 		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/myscripts.js",
+		"/Users/juansepulveda/web-parenteral-nutrition/index.html",
+		"/Users/juansepulveda/web-parenteral-nutrition/variables.html",
+		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/NPCAVRRweb.sublime-project",
 		"/Users/juansepulveda/Documents/Proyectos Hospital/Nutrición Parenteral/web version/index.html",
 		"/Users/juansepulveda/Desktop/holamundo.py",
 		"/Users/juansepulveda/Documents/Proyectos personales/Jovenes Programadores/Protocolo TRRC/TRRC_protocolo.sublime-project",
@@ -373,66 +358,13 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6427,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6390,
-								6390
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1065,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1064,
-								1064
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/HTML/HTML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
+			]
+		},
+		{
+			"sheets":
+			[
 			]
 		}
 	],
@@ -453,11 +385,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -509,15 +448,15 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
-	"show_minimap": true,
+	"show_minimap": false,
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 286.0,
+	"side_bar_width": 142.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
