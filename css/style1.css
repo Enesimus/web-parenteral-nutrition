@@ -1,6 +1,10 @@
 body {
 	font-family: 'Oxygen', sans-serif;
-	background-image: linear-gradient(45deg, rgb(34,45,67), 45%, rgb(67,34,45), 99%);
+	background-color: linear-gradient(45deg, rgb(34,45,67), 45%, rgb(67,34,45), 99%);
+}
+
+h1 {
+	padding: 0px 0px 0px 20px;
 }
 
 div {
@@ -13,11 +17,21 @@ div {
 
 pre {
 	text-align: right;
-	font-size: 6px;
+	font-size: 7px;
 }
 
-label {
-	font-weight: 300;
+form, input {
+	font-size:11px;
+	font-family: 'Oxygen', sans-serif;
+}
+
+li {
+	list-style-type: none;
+}
+
+table, th, td {
+	border: 1px solid #b32d00;
+	border-radius: 5px;
 }
 
 #encabezado {
@@ -27,19 +41,21 @@ label {
 	justify-content: flex-start;
 }
 
-form, input {
-	font-size:11px;
-	font-family: 'Oxygen', sans-serif;
-}
-
-h1 {
-	padding: 0px 0px 0px 20px;
-}
-
 #sexo {
-	width: 150px;
+	width: 100px;
 }
 
 #nombres, #appater, #apmater {
 	text-transform:uppercase;
 }
+
+#prescripcion {
+	width: 40%;
+}
+
+#prescription, label {
+	text-align:right;
+}
+
+
+

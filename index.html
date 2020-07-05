@@ -66,43 +66,146 @@
 					<label for="Otro">Otro</label>
 					<input type="radio" name="Sexo" value="Otro" id="Otro">
 				</fieldset>
-				
 			</div>
+			<!-- Inicio de la prescripción-->
 			<div id="prescripcion">
-				<label for="voldes">Volumen deseado</label>
-				<input type="number" name="Volumen deseado" id="voldes" min="0" max="2500">
-				<label for="cg">Carga de glucosa</label>
-				<input type="number" name="Carga Glucosa" id="cg" step="0.1" min="0" max="15">
-				<label for="proteinas">Proteínas</label>
-				<input type="number" name="Proteinas" id="proteinas" step="0.1" min="0" max="5">
-				<label for="lipidos">Lípidos</label>
-				<input type="number" name="Lipidos" id="lipidos" step="0.1" min="0" max="10">
-				<label for="na">Sodio</label>
-				<input type="number" name="Sodio" id="na" step="0.1" min="0" max="10">
-				<label for="acna">Acetato</label>
+				<ul>
+				<li>
+					<label for="voldes">Volumen deseado</label>
+					<input type="number" name="Volumen deseado" id="voldes" min="0" max="2500">
+					<span>mL/kg</span>
+				</li>
+				<li>
+					<label for="cg">Carga de glucosa</label>
+					<input type="number" name="Carga Glucosa" id="cg" step="0.1" min="0" max="15">
+					<span>g/kg/min</span>
+				</li>
+				<li>
+					<label for="proteinas">Proteínas</label>
+					<input type="number" name="Proteinas" id="proteinas" step="0.1" min="0" max="5">
+					<span>g/kg/d</span>
+				</li>		
+				<li>				
+					<label for="lipidos">Lípidos</label>
+					<input type="number" name="Lipidos" id="lipidos" step="0.1" min="0" max="10">
+					<span>g/kg/d</span>
+				</li>
+				<li>
+					<label for="na" title="Señalar aporte total de sodio (NaCl + Acetato de Sodio)">Sodio</label>
+					<input type="number" name="Sodio" id="na" step="0.1" min="0" max="10">
+					<span>mEq/kg/d</span>
+				</li>
+				<li><label for="acna">Acetato</label>
 				<input type="number" name="Acetato" id="acna" step="0.1" min="0" max="5">
-				<label for="k">Potasio</label>
-				<input type="number" name="Potasio" id="k" step="0.1" min="0" max="10">
-				<label for="po">Fosfato</label>
-				<input type="number" name="Fosfato" id="po" step="0.1" min="0" max="5">
-				<label for="ca">Calcio</label>
-				<input type="number" name="Calcio" id="ca" step="0.1" min="0" max="15">
-				<label for="mg">Magnesio</label>
-				<input type="number" name="Magnesio" id="mg" step="0.1" min="0" max="1">
-				<label for="zn">Zinc</label>
-				<input type="number" name="Zinc" id="zn" step="0.01" min="0" max="1">
-				<label for="vits">Vitaminas</label>
-				<input list="decision" name="Vitaminas" id="vits" size="4">
-				<label for="oe">Oligoelementos</label>
-				<input list="decision" name="Oligoelementos" id="oe" size="4">
-				<label for="ciclado">Ciclado</label>
-				<input list="decision" name="Ciclado" id="ciclado" size="4">
+				<span>mEq/kg/d</span>
+				</li>
+				<li>
+					<label for="k" title="Señalar aporte total de potasio (KCl + Fosfato de Potasio)">Potasio</label>
+					<input type="number" name="Potasio" id="k" step="0.1" min="0" max="10">
+					<span>mEq/kg/d</span>
+				</li>
+				<li>
+					<label for="po">Fosfato</label>
+					<input type="number" name="Fosfato" id="po" step="0.1" min="0" max="5">
+					<span>mEq/kg/d</span>
+				</li>
+				<li>
+					<label for="ca">Calcio</label>
+					<input type="number" name="Calcio" id="ca" step="0.1" min="0" max="15">
+					<span>mg/kg/d</span>
+				</li>
+				<li>
+					<label for="mg">Magnesio</label>
+					<input type="number" name="Magnesio" id="mg" step="0.1" min="0" max="1">
+					<span>mEq/kg/d</span>
+				</li>
+				<li>
+					<label for="zn">Zinc</label>
+					<input type="number" name="Zinc" id="zn" step="0.01" min="0" max="1">
+					<span>ug/kg/d</span>
+				</li>				
+				<li>
+					<label for="vits">Vitaminas</label>
+					<input list="decision" name="Vitaminas" id="vits" size="4">
+				</li>				
+				<li>
+					<label for="oe">Oligoelementos</label>
+					<input list="decision" name="Oligoelementos" id="oe" size="4">
+				</li>				
+				<li>
+					<label for="ciclado">Ciclado</label>
+					<input list="decision" name="Ciclado" id="ciclado" size="4">
+				</li>
 					<datalist id="decision">
 						<option>Si</option>
 						<option>No</option>
 					</datalist>
-				<label for="hrsusp" hidden="true">Horas de suspensión</label>
-				<input type="number" name="Horas de suspensión" id="hrsusp" max="12" hidden="true">
+				<li>
+					<label for="hrsusp" hidden="true">Horas de suspensión</label>
+					<input type="number" name="Horas de suspensión" id="hrsusp" max="12" hidden="true">
+					<span hidden="true">horas</span>
+				</li>
+				</ul>
+			</div>
+			<div class="receta">
+				<ul>
+					<li>Glucosa 50%</li>
+					<li>Aminoácidos Infantil 10%</li>
+					<li>Lípidos 20% SMOF Lipid</li>
+					<li>Sodio Cloruro 10%</li>
+					<li>Potasio Cloruro 10%</li>
+					<li>Magnesio Sulfato 25%</li>
+					<li>Zinc Sulfato 0.88%</li>
+					<li>Calcio Gluconato 10%</li>
+					<li>Bifosfato Potasio 15%</li>
+					<li>Acetato Sodio 30%</li>
+					<li>Vitaminas hidrosolubles</li>
+					<li>Vitaminas liposolubles</li>
+					<li>Oligoelementos</li>
+					<li>Agua</li>
+					<li>Volumen total</li>
+					<li>Osmolaridad Calculada</li>
+				</ul>
+			</div>
+			<div class="infocalorias">
+				<table id="caloriasaportadas">
+					<thead>
+						<th></th>
+						<th>Cal/kg</th>
+						<th>% Cal</t>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Carbohidratos</th>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>Proteinas</th>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<th>Lípidos</th>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="caloríasrequeridas">
+					<thead>
+							<th></th>
+							<th>Schoffield</th>
+							<th>OMS</th>
+					</thead>
+					<tbody>
+						<tr>
+							<th>Calorías Requeridas</th>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 			<div class="profesionales">
 				<label for="medico">Médico</label>
@@ -112,9 +215,8 @@
 			</div>
 			<input type="reset" name="Restablecer">
 			<input type="submit" name="Enviar" disabled="true">
-<!-- 		</form>
- -->	</div>
-	
+		</form>
+</div>
 	<footer>
 		<pre>
 			<a href="mailto:jrsepulv@gmail.com">Juan Sepúlveda</a>
