@@ -13,13 +13,13 @@
 <body>
 	<header>
 		<div id="encabezado">
+			<a href="http://hospitallosangeles.cl" target="_"> <img src="images/logocavrr.png" alt="Logotipo del Complejo Asistencial Doctor Víctor Ríos Ruiz" height="75px"></a>
 			<h1>Nutrición Parenteral</h1>
-			<img src="images/logocavrr.png" alt="Logotipo del Complejo Asistencial Doctor Víctor Ríos Ruiz" height="75px">
 		</div>
 	</header>
 	<div id="formulario">
-<!-- 		<form method="post">
- -->			<div id="infounidad">
+		<form>
+		<div id="infounidad">
 				<label for="unidad">Unidad</label>
 				<input list="Unidades" name="Unidad" id="unidad" size="18">
 					<datalist id="Unidades">
@@ -34,14 +34,14 @@
 				<input type="tel" name="Anexo" id="anexo" size="8">
 			</div>
 			<div class="infopaciente">
+				<label for="run">RUN</label>
+				<input type="text" name="RUN" id="run" pattern="([0-9]).{8}-([0-9][k,K]).{1}" size="10">
 				<label for="nombres">Nombres</label>
 				<input type="text" name="Nombres" id="nombres" size="30">
 				<label for="appater">Apellido paterno</label>
-				<input type="text" name="Apellido Paterno" id="appater" size="20">
+				<input type="text" name="Apellido Paterno" id="appater" size="30">
 				<label for="apmater">Apellido materno</label>
-				<input type="text" name="Apellido Materno" id="apmater" size="20"><br>
-				<label for="run">RUN</label>
-				<input type="text" name="RUN" id="run" pattern="([0-9]).{8}-([0-9][k,K]).{1}" size="10">
+				<input type="text" name="Apellido Materno" id="apmater" size="30"><br>
 			</div>
 			<div class="infopaciente">
 				<label for="fechanacimiento">Fecha de nacimiento</label>
@@ -51,23 +51,18 @@
 				<button id="calcEdad">Calcular edad</button>
 				<label for="edad">Edad</label>
 				<span id="edad"></span>
-			</div>
-			<div class="infopaciente">
 				<label for="peso">Peso</label>
 				<input type="number" name="Peso" id="peso" min="0.4" max="150" step="0.1"><span>kg</span>
 				<label for="talla">Talla</label>
 				<input type="number" name="Talla" id="talla" min="0.25" max="2.30" step="0.01"><span>cm</span>
 				<label for="sc">Superficie corporal</label>
 				<span id="scorp"></span><span>m<sup>2</sup></span>
-<!-- 				<input type="number" name="Superficie Corporal" id="sc" min="0.1" max="2">
- -->			</div>
-			<div class="infopaciente">
 				<fieldset id="sexo">
 					<legend>Sexo</legend>
 					<label for="Masculino">Masculino</label>
-					<input type="radio" name="Sexo" value="Masculino" id="Masculino">
+					<input type="radio" name="Sexo" value="Masculino" id="Masculino"><br>
 					<label for="Femenino">Femenino</label>
-					<input type="radio" name="Sexo" value="Femenino" id="Femenino">
+					<input type="radio" name="Sexo" value="Femenino" id="Femenino"><br>
 					<label for="Otro">Otro</label>
 					<input type="radio" name="Sexo" value="Otro" id="Otro">
 				</fieldset>
@@ -108,6 +103,12 @@
 					</datalist>
 				<label for="hrsusp" hidden="true">Horas de suspensión</label>
 				<input type="number" name="Horas de suspensión" id="hrsusp" max="12" hidden="true">
+			</div>
+			<div class="profesionales">
+				<label for="medico">Médico</label>
+				<input type="text" name="" id="medico">
+				<label for="quimico">Químico</label>
+				<input type="text" id="quimico" name="">
 			</div>
 			<input type="reset" name="Restablecer">
 			<input type="submit" name="Enviar" disabled="true">
