@@ -69,67 +69,70 @@
 */
 
 const unidad = document.getElementById("unidad").value;
-const cama = document.querySelector("#cama");
-const anexo = document.querySelector("#anexo");
-const nombres = document.querySelector("#nombres");
-const apPater = document.querySelector("#appater");
-const apMater= document.querySelector("#apmater");
-const fNac = document.querySelector("#fechanacimiento");
-const run = document.querySelector("#run");
-const fActual = document.querySelector("#fechaactual");
-const peso = document.querySelector("#peso");
-const talla = document.querySelector("#talla");
-const volDes = document.querySelector("#voldes");
-const cargaGluc = document.querySelector("#cg");
-const prots = document.querySelector("#proteinas");
-const lips = document.querySelector("#lipidos");
-const na = document.querySelector("#na");
-const acna = document.querySelector("#acna");
-const k = document.querySelector("#k");
-const kpo = document.querySelector("#kpo");
-const ca = document.querySelector("#ca");
-const mg = document.querySelector("#mg");
-const zn = document.querySelector("#zn");
-const vits = document.querySelector("#vits");
-const ols = document.querySelector("#oe");
-const ciclado = document.querySelector("#ciclado");
-const hrSusp = document.querySelector("#hrsusp");
+const cama = document.querySelector("#cama").value;
+const anexo = document.querySelector("#anexo").value;
+const nombres = document.querySelector("#nombres").value;
+const apPater = document.querySelector("#appater").value;
+const apMater = document.querySelector("#apmater").value;
+const fNac = document.querySelector("#fechanacimiento").value;
+const run = document.querySelector("#run").value;
+const fActual = document.querySelector("#fechaactual").value;
+const peso = document.querySelector("#peso").value;
+const talla = document.querySelector("#talla").value;
+const volDes = document.querySelector("#voldes").value;
+const cargaGluc = document.querySelector("#cg").value;
+const prots = document.querySelector("#proteinas").value;
+const lips = document.querySelector("#lipidos").value;
+const na = document.querySelector("#na").value;
+const acna = document.querySelector("#acna").value;
+const k = document.querySelector("#k").value;
+const kpo = document.querySelector("#kpo").value;
+const ca = document.querySelector("#ca").value;
+const mg = document.querySelector("#mg").value;
+const zn = document.querySelector("#zn").value;
+const vits = document.querySelector("#vits").value;
+const ols = document.querySelector("#oe").value;
+const ciclado = document.querySelector("#ciclado").value;
+const hrSusp = document.querySelector("#hrsusp").value;
 
-if (ciclado == "Si") {
-	hrSusp.attrib.hidden = "false";
-} else {}
-
-function calcSC(peso,talla){
-	let supCorp;
-	if (talla !== "") {
-		supCorp = parseFloat((Math.sqrt((peso * talla)**2 / 3600)).toPrecision(2));
-		return supCorp;
-		document.getElementById("scorp").innerHTML = supCorp + " ";
-	} else {
-		supCorp = ((peso * 4)+7)/(90+peso).toPrecision(2);
-		return supCorp;
-		document.getElementById("scorp").innerHTML = supCorp + " ";
-	}
+if (ciclado === "Si") {
+  hrSusp.attrib.hidden = "false";
+} else {
 }
 
-function calcEdad(){
-	let fechaActual = new Date(document.getElementById("fechaactual").value);
-	let fechaNacimiento = new Date(document.getElementById("fechanacimiento").value);
-	let edadms = fechaActual - fechaNacimiento;
-	let edadDias = edadms / 86400000;
-	switch(edadDias){
-		case edadDias<30:
-			document.getElementById("edad").innerHTML = edadDias + "días";
-			break;
-		case edadDias>=30 && edadDias<365:
-			var edadMes = edadDias / 30.2;
-			document.getElementById("edad").innerHTML = edadMes + "meses";
-			break;
-		case edadDias >= 365:
-			var edadAnos = edadDias /365;
-			document.getElementById("edad").innerHTML = edadAnos + "años";
-			break
-		default:
-			document.getElementById('edad').innerHTML = "";
-	}
+function calcSC(peso, talla) {
+  let supCorp;
+  if (talla !== "") {
+    supCorp = parseFloat(Math.sqrt((peso * talla) ** 2 / 3600).toPrecision(2));
+    return supCorp;
+    document.getElementById("scorp").innerHTML = supCorp + " ";
+  } else {
+    supCorp = (peso * 4 + 7) / (90 + peso).toPrecision(2);
+    return supCorp;
+    document.getElementById("scorp").innerHTML = supCorp + " ";
+  }
+}
+
+function calcEdad() {
+  let fechaActual = new Date(document.getElementById("fechaactual").value);
+  let fechaNacimiento = new Date(
+    document.getElementById("fechanacimiento").value
+  );
+  let edadms = fechaActual - fechaNacimiento;
+  let edadDias = edadms / 86400000;
+  switch (edadDias) {
+    case edadDias < 30:
+      document.getElementById("edad").innerHTML = edadDias + "días";
+      break;
+    case edadDias >= 30 && edadDias < 365:
+      var edadMes = edadDias / 30.2;
+      document.getElementById("edad").innerHTML = edadMes + "meses";
+      break;
+    case edadDias >= 365:
+      var edadAnos = edadDias / 365;
+      document.getElementById("edad").innerHTML = edadAnos + "años";
+      break;
+    default:
+      document.getElementById("edad").innerHTML = "";
+  }
 }
