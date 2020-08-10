@@ -127,7 +127,3 @@ function calcEdad() {
 	5.3 agregar factor estrés
 
 */
-
-
-
-
