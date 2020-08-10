@@ -1,0 +1,39 @@
+Glucosa 50%
+=SI(F9="";"";SI(D12="NO";J13*2;J13*2*(1+D12)))
+
+Aminoácidos Infantil 10%
+=SI(F9="";"";SI(D12="NO";B16*I9*10;B16*I9*10*(1+D12)))
+
+Lípidos 20% SMOF Lipid
+=SI(F9="";"";SI(D12="NO";B17*I9*5;B17*I9*5*(1+D12)))
+
+Cloruro de Sodio 10%
+=SI(F9="";"";SI(D12="NO";SI(B19>0;((B18-B19)*I9/1,75);(B18*I9/1,75));SI(B19>0;(((B18-B19)*I9/1,75)*(1+D12));(B18*I9*(1+D12)/1,75))))
+
+Acetato de Sodio 30%
+=SI(F9="";"";SI(D12="NO";(B19*I9)/2,2;B19*I9*(1+D12)/2,2))
+
+Cloruro de Potasio 10%
+=SI(F9="";"";SI(D12="NO";SI(B21>0;((B20-B21)*I9)/1,34;(B20*I9/1,34));SI(B21>0;(((B20-B21)*I9/1,34)*(1+D12));(B20*I9*(1+D12)/1,34))))
+
+Bifosfato de Potasio 15%
+=SI(F9="";"";SI(D12="NO";(B21*I9)/1,1;B21*I9*(1+D12)/1,1))
+
+Gluconato de Calcio 10%
+=SI(F9="";"";SI(D12="NO";(B22*I9)/9;B22*I9*(1+D12)/9))
+
+Sulfato de Magnesio 25%
+=SI(F9="";"";SI(D12="NO";(B23*I9)/2;B23*I9*(1+D12)/2))
+
+Sulfato de Zinc 0,88%
+=SI(F9="";"";SI(D12="NO";(B24*I9/1000)/2;(B24*I9*(1+D12)/1000)/2))
+
+Vitalipid infantil
+=SI(B25="Si";SI(I9<2,5;I9*2;10);0)
+
+Soluvit
+=SI(B25="Si";SI(I9<10;I9*1;10);0)
+
+Oligoelementos
+=SI(B26="Si";I9*0,02;0)
+
