@@ -3,9 +3,69 @@
 2. creacion de paciente
 	2.1 validacion de run
 3. creacion de prescripcion
-	3.1 calculo de edad : segun edad expresar en días, meses o años
-	3.2 calculo de superficie corporal
-	3.3 ingreso de datos
+	3.1 calculo de edad : segun edad expresar en días, meses o años*/
+	
+let estimaEdad1 = document.querySelector("#fechanacimiento");
+let estimaEdad2 = document.querySelector("#fechaactual");
+
+estimaEdad1.oninput = calcEdad;
+estimaEdad2.oninput = calcEdad;
+
+function calcEdad() {
+	let fN = new Date(document.getElementById("fechanacimiento").value);
+  let fA = new Date(document.getElementById("fechaactual").value);
+  let edadMs = fA - fN;
+  let edadDias = edadMs / (1000*60*60*24);
+  let edadSem = Math.floor(edadDias / 7);
+  let edadMes = Math.floor(edadDias / 30.44);
+  let edadYr = Math.floor(edadDias / 365.25);
+  let edMesRes = edadMes - edadYr * 12;
+     if (edadDias <= 30) {
+          document.getElementById("edad").innerHTML =
+            edadDias + " Días.";
+        } else {
+          if (edadDias > 30 && edadYr <= 1) {
+            document.getElementById("edad").innerHTML =
+              edadMes + " Meses.";
+          } else {
+            if (edadYr > 1 && edadYr <= 6) {
+              document.getElementById("edad").innerHTML =
+                edadYr + " Años " + edMesRes + " Meses.";
+            } else {
+              document.getElementById("edad").innerHTML =
+                edadYr + " Años.";
+            }
+          }
+        }
+}
+
+	/*3.2 calculo de superficie corporal*/
+
+	let calcSupCorp1 = document.querySelector("#peso");
+	let calcSupCorp2 = document.querySelector("#talla");
+
+	calcSupCorp1.oninput = supCorp;
+	calcSupCorp2.oninput = supCorp;
+
+      function supCorp() {
+        let p = (document.getElementById("peso").value * 10) / 10;
+        let t = document.getElementById("talla").value;
+        if (p !== "" || p !== 0) {
+          if (t !== "") {
+            let sc = parseFloat(Math.sqrt((p * t) / 3600).toPrecision(2));
+            document.getElementById("scorp").innerHTML = sc + " m<sup>2</sup>";
+          } else {
+            let scSt = ((p * 4 + 7) / (90 + p)).toPrecision(2);
+            document.getElementById("scorp").innerHTML = scSt + " m<sup>2</sup>";
+          }
+        } else {
+          alert("Introduzca el peso del paciente");
+        }
+
+        // document.getElementById("sc1").innerHTML = sc1 + " m<sup>2</sup>";
+      }
+
+	/*3.3 ingreso de datos
 		3.3.1 volumen deseado: ml/kg o ml/m2
 		3.3.2 carga de glucosa: mg/kg/min
 		3.3.3 proteinas: g/kg/d
@@ -67,72 +127,3 @@
 	5.3 agregar factor estrés
 
 */
-
-const unidad = document.getElementById("unidad").value;
-const cama = document.querySelector("#cama").value;
-const anexo = document.querySelector("#anexo").value;
-const nombres = document.querySelector("#nombres").value;
-const apPater = document.querySelector("#appater").value;
-const apMater = document.querySelector("#apmater").value;
-const fNac = document.querySelector("#fechanacimiento").value;
-const run = document.querySelector("#run").value;
-const fActual = document.querySelector("#fechaactual").value;
-const peso = document.querySelector("#peso").value;
-const talla = document.querySelector("#talla").value;
-const volDes = document.querySelector("#voldes").value;
-const cargaGluc = document.querySelector("#cg").value;
-const prots = document.querySelector("#proteinas").value;
-const lips = document.querySelector("#lipidos").value;
-const na = document.querySelector("#na").value;
-const acna = document.querySelector("#acna").value;
-const k = document.querySelector("#k").value;
-const kpo = document.querySelector("#kpo").value;
-const ca = document.querySelector("#ca").value;
-const mg = document.querySelector("#mg").value;
-const zn = document.querySelector("#zn").value;
-const vits = document.querySelector("#vits").value;
-const ols = document.querySelector("#oe").value;
-const ciclado = document.querySelector("#ciclado").value;
-const hrSusp = document.querySelector("#hrsusp").value;
-
-if (ciclado === "Si") {
-  hrSusp.attrib.hidden = "false";
-} else {
-}
-
-function calcSC(peso, talla) {
-  let supCorp;
-  if (talla !== "") {
-    supCorp = parseFloat(Math.sqrt((peso * talla) ** 2 / 3600).toPrecision(2));
-    return supCorp;
-    document.getElementById("scorp").innerHTML = supCorp + " ";
-  } else {
-    supCorp = (peso * 4 + 7) / (90 + peso).toPrecision(2);
-    return supCorp;
-    document.getElementById("scorp").innerHTML = supCorp + " ";
-  }
-}
-
-function calcEdad() {
-  let fechaActual = new Date(document.getElementById("fechaactual").value);
-  let fechaNacimiento = new Date(
-    document.getElementById("fechanacimiento").value
-  );
-  let edadms = fechaActual - fechaNacimiento;
-  let edadDias = edadms / 86400000;
-  switch (edadDias) {
-    case edadDias < 30:
-      document.getElementById("edad").innerHTML = edadDias + "días";
-      break;
-    case edadDias >= 30 && edadDias < 365:
-      var edadMes = edadDias / 30.2;
-      document.getElementById("edad").innerHTML = edadMes + "meses";
-      break;
-    case edadDias >= 365:
-      var edadAnos = edadDias / 365;
-      document.getElementById("edad").innerHTML = edadAnos + "años";
-      break;
-    default:
-      document.getElementById("edad").innerHTML = "";
-  }
-}
