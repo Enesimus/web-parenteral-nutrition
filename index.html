@@ -1,250 +1,385 @@
 <!DOCTYPE html>
 <html lang="es-CL">
-<head>
-	<title>Nutrición Parenteral</title>
-	<meta charset="utf-8">
-	<meta name="Author" content="Juan Sepúlveda">
-	<meta name="description" content="Proyecto de receta automatizada web de nutricion parenteral pediatrica">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style1.css">
-	<link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-	<header>
-		<div id="encabezado">
-			<a href="http://hospitallosangeles.cl" target="_"> <img src="images/logocavrr.png" alt="Logotipo del Complejo Asistencial Doctor Víctor Ríos Ruiz" height="75px"></a>
-			<h1>Nutrición Parenteral</h1>
-		</div>
-	</header>
-	<div id="formulario">
-		<form>
-		<div id="infounidad">
-				<label for="unidad">Unidad</label>
-				<input list="Unidades" name="Unidad" id="unidad" size="18">
-					<datalist id="Unidades">
-						<option>Cirugía Infantil</option>
-						<option>Neonatología</option>
-						<option>Pediatría</option>
-						<option>UCI Pediátrica</option>
-					</datalist>
-				<label for="cama">Cama</label>
-				<input type="text" name="Cama" id="cama" size="6">
-				<label for="anexo">Anexo</label>
-				<input type="tel" name="Anexo" id="anexo" size="8">
-			</div>
-			
-			<div class="infopaciente">
-				
-				<label for="run">RUN</label>
-				<input type="text" name="RUN" id="run" pattern="([0-9]).{8}-([0-9][k,K]).{1}" size="10">
-				
-				<label for="nombres">Nombres</label>
-				<input type="text" name="Nombres" id="nombres" size="30">
-				
-				<label for="appater">Apellido paterno</label>
-				<input type="text" name="Apellido Paterno" id="appater" size="30">
-				
-				<label for="apmater">Apellido materno</label>
-				
-				<input type="text" name="Apellido Materno" id="apmater" size="30"><br>
-			</div>
-			
-			<div class="infopaciente">
-				
-				<label for="fechanacimiento">Fecha de nacimiento</label>
-				<input type="date" name="fecha de nacimiento" id="fechanacimiento">
-				
-				<label for="fechaactual">Fecha actual</label>
-				<input type="date" name="Fecha Actual" id="fechaactual">
-<!--<button id="calcEdad">Calcular edad</button>-->
-				
-				<label for="edad">Edad</label>
-				<span id="edad"></span>
-				
-				<label for="peso">Peso</label>
-				
-				<input type="number" name="Peso" id="peso" min="0.4" max="150" step="0.1"><span>kg</span>
-				
-				<label for="talla">Talla</label>
-				<input type="number" name="Talla" id="talla" min="35" max="200" step="1"><span>cm</span>
-				
-				<label for="sc">Superficie corporal</label>
-				
-				<span id="scorp"></span>
-				
-				<fieldset id="sexo">
-					<legend>Sexo</legend>
-					
-					<label for="Masculino">Masculino</label>
-					<input type="radio" name="Sexo" value="Masculino" id="Masculino"><br>
-					
-					<label for="Femenino">Femenino</label>
-					<input type="radio" name="Sexo" value="Femenino" id="Femenino"><br>
-					
-					<label for="Otro">Otro</label>
-					<input type="radio" name="Sexo" value="Otro" id="Otro">
-				</fieldset>
-			
-			</div>
-			<!-- Inicio de la prescripción-->
-			<div id="prescripcion">
-				<ul>
-				<li>
-					<label for="voldes">Volumen deseado</label>
-					<input type="number" name="Volumen deseado" id="voldes" min="0" max="2500">
-					<span>mL/kg</span>
-				</li>
-				<li>
-					<label for="cg">Carga de glucosa</label>
-					<input type="number" name="Carga Glucosa" id="cg" step="0.1" min="0" max="15">
-					<span>g/kg/min</span>
-				</li>
-				<li>
-					<label for="proteinas">Proteínas</label>
-					<input type="number" name="Proteinas" id="proteinas" step="0.1" min="0" max="5">
-					<span>g/kg/d</span>
-				</li>		
-				<li>				
-					<label for="lipidos">Lípidos</label>
-					<input type="number" name="Lipidos" id="lipidos" step="0.1" min="0" max="10">
-					<span>g/kg/d</span>
-				</li>
-				<li>
-					<label for="na" title="Señalar aporte total de sodio (NaCl + Acetato de Sodio)">Sodio</label>
-					<input type="number" name="Sodio" id="na" step="0.1" min="0" max="10">
-					<span>mEq/kg/d</span>
-				</li>
-				<li><label for="acna">Acetato</label>
-				<input type="number" name="Acetato" id="acna" step="0.1" min="0" max="5">
-				<span>mEq/kg/d</span>
-				</li>
-				<li>
-					<label for="k" title="Señalar aporte total de potasio (KCl + Fosfato de Potasio)">Potasio</label>
-					<input type="number" name="Potasio" id="k" step="0.1" min="0" max="10">
-					<span>mEq/kg/d</span>
-				</li>
-				<li>
-					<label for="po">Fosfato</label>
-					<input type="number" name="Fosfato" id="po" step="0.1" min="0" max="5">
-					<span>mEq/kg/d</span>
-				</li>
-				<li>
-					<label for="ca">Calcio</label>
-					<input type="number" name="Calcio" id="ca" step="0.1" min="0" max="15">
-					<span>mg/kg/d</span>
-				</li>
-				<li>
-					<label for="mg">Magnesio</label>
-					<input type="number" name="Magnesio" id="mg" step="0.1" min="0" max="1">
-					<span>mEq/kg/d</span>
-				</li>
-				<li>
-					<label for="zn">Zinc</label>
-					<input type="number" name="Zinc" id="zn" step="0.01" min="0" max="1">
-					<span>ug/kg/d</span>
-				</li>				
-				<li>
-					<label for="vits">Vitaminas</label>
-					<input list="decision" name="Vitaminas" id="vits" size="4">
-				</li>				
-				<li>
-					<label for="oe">Oligoelementos</label>
-					<input list="decision" name="Oligoelementos" id="oe" size="4">
-				</li>				
-				<li>
-					<label for="ciclado">Ciclado</label>
-					<input list="decision" name="Ciclado" id="ciclado" size="4">
-				</li>
-					<datalist id="decision">
-						<option>Si</option>
-						<option>No</option>
-					</datalist>
-				<li>
-					<label for="hrsusp" hidden="true">Horas de suspensión</label>
-					<input type="number" name="Horas de suspensión" id="hrsusp" max="12" hidden="true">
-					<span hidden="true">horas</span>
-				</li>
-				</ul>
-			</div>
-			<div class="receta">
-				<ul>
-					<li>Glucosa 50%</li>
-					<li>Aminoácidos Infantil 10%</li>
-					<li>Lípidos 20% SMOF Lipid</li>
-					<li>Sodio Cloruro 10%</li>
-					<li>Potasio Cloruro 10%</li>
-					<li>Magnesio Sulfato 25%</li>
-					<li>Zinc Sulfato 0.88%</li>
-					<li>Calcio Gluconato 10%</li>
-					<li>Bifosfato Potasio 15%</li>
-					<li>Acetato Sodio 30%</li>
-					<li>Vitaminas hidrosolubles</li>
-					<li>Vitaminas liposolubles</li>
-					<li>Oligoelementos</li>
-					<li>Agua</li>
-					<li>Volumen total</li>
-					<li>Osmolaridad Calculada</li>
-				</ul>
-			</div>
-			<div class="infocalorias">
-				<table id="caloriasaportadas">
-					<thead>
-						<th></th>
-						<th>Cal/kg</th>
-						<th>% Cal</th>
-					</thead>
-					<tbody>
-						<tr>
-							<th>Carbohidratos</th>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<th>Proteinas</th>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr>
-							<th>Lípidos</th>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-				<table id="caloríasrequeridas">
-					<thead>
-							<th></th>
-							<th>Schoffield</th>
-							<th>OMS</th>
-					</thead>
-					<tbody>
-						<tr>
-							<th>Calorías Requeridas</th>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div class="profesionales">
-				<label for="medico">Médico</label>
-				<input type="text" name="" id="medico">
-				<label for="quimico">Químico</label>
-				<input type="text" id="quimico" name="">
-			</div>
-			<input type="reset" name="Restablecer">
-			<input type="submit" name="Enviar" disabled="true">
-		</form>
-</div>
-	<footer>
-		<pre>
+  <head>
+    <title>Nutrición Parenteral</title>
+    <meta charset="utf-8" />
+    <meta name="Author" content="Juan Sepúlveda" />
+    <meta
+      name="description"
+      content="Proyecto de receta automatizada web de nutricion parenteral pediatrica"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style1.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="encabezado">
+        <a href="http://hospitallosangeles.cl" target="_">
+          <img
+            src="images/logocavrr.png"
+            alt="Logotipo del Complejo Asistencial Doctor Víctor Ríos Ruiz"
+            height="75px"
+        /></a>
+        <h1>Nutrición Parenteral</h1>
+      </div>
+    </header>
+    <div id="formulario">
+      <form>
+        <div id="infounidad">
+          <label for="unidad">Unidad</label>
+          <input list="Unidades" name="Unidad" id="unidad" size="18" />
+          <datalist id="Unidades">
+            <option>Cirugía Infantil</option>
+            <option>Neonatología</option>
+            <option>Pediatría</option>
+            <option>UCI Pediátrica</option>
+          </datalist>
+          <label for="cama">Cama</label>
+          <input type="text" name="Cama" id="cama" size="6" />
+          <label for="anexo">Anexo</label>
+          <input type="tel" name="Anexo" id="anexo" size="8" />
+        </div>
+
+        <div class="infopaciente">
+          <label for="run">RUN</label>
+          <input
+            type="text"
+            name="RUN"
+            id="run"
+            pattern="([0-9]).{8}-([0-9][k,K]).{1}"
+            size="10"
+          />
+
+          <label for="nombres">Nombres</label>
+          <input type="text" name="Nombres" id="nombres" size="30" />
+
+          <label for="appater">Apellido paterno</label>
+          <input type="text" name="Apellido Paterno" id="appater" size="30" />
+
+          <label for="apmater">Apellido materno</label>
+
+          <input
+            type="text"
+            name="Apellido Materno"
+            id="apmater"
+            size="30"
+          /><br />
+        </div>
+
+        <div class="infopaciente">
+          <label for="fechanacimiento">Fecha de nacimiento</label>
+          <input type="date" name="fecha de nacimiento" id="fechanacimiento" />
+
+          <label for="fechaactual">Fecha actual</label>
+          <input type="date" name="Fecha Actual" id="fechaactual" />
+          <!--<button id="calcEdad">Calcular edad</button>-->
+
+          <label for="edad">Edad</label>
+          <span id="edad"></span>
+
+          <label for="peso">Peso</label>
+
+          <input
+            type="number"
+            name="Peso"
+            id="peso"
+            min="0.4"
+            max="150"
+            step="0.1"
+          /><span>kg</span>
+
+          <label for="talla">Talla</label>
+          <input
+            type="number"
+            name="Talla"
+            id="talla"
+            min="35"
+            max="200"
+            step="1"
+          /><span>cm</span>
+
+          <label for="sc">Superficie corporal</label>
+
+          <span id="scorp"></span>
+
+          <fieldset id="sexo">
+            <legend>Sexo</legend>
+
+            <label for="Masculino">Masculino</label>
+            <input
+              type="radio"
+              name="Sexo"
+              value="Masculino"
+              id="Masculino"
+            /><br />
+
+            <label for="Femenino">Femenino</label>
+            <input
+              type="radio"
+              name="Sexo"
+              value="Femenino"
+              id="Femenino"
+            /><br />
+
+            <label for="Otro">Otro</label>
+            <input type="radio" name="Sexo" value="Otro" id="Otro" />
+          </fieldset>
+        </div>
+        <!-- Inicio de la prescripción-->
+        <div id="prescripcion">
+          <ul>
+            <li>
+              <label for="voldes">Volumen deseado</label>
+              <input
+                type="number"
+                name="Volumen deseado"
+                id="voldes"
+                min="0"
+                max="2500"
+              />
+              <span>mL/kg</span>
+            </li>
+            <li>
+              <label for="cg">Carga de glucosa</label>
+              <input
+                type="number"
+                name="Carga Glucosa"
+                id="cg"
+                step="0.1"
+                min="0"
+                max="15"
+              />
+              <span>g/kg/min</span>
+            </li>
+            <li>
+              <label for="proteinas">Proteínas</label>
+              <input
+                type="number"
+                name="Proteinas"
+                id="proteinas"
+                step="0.1"
+                min="0"
+                max="5"
+              />
+              <span>g/kg/d</span>
+            </li>
+            <li>
+              <label for="lipidos">Lípidos</label>
+              <input
+                type="number"
+                name="Lipidos"
+                id="lipidos"
+                step="0.1"
+                min="0"
+                max="10"
+              />
+              <span>g/kg/d</span>
+            </li>
+            <li>
+              <label
+                for="na"
+                title="Señalar aporte total de sodio (NaCl + Acetato de Sodio)"
+                >Sodio</label
+              >
+              <input
+                type="number"
+                name="Sodio"
+                id="na"
+                step="0.1"
+                min="0"
+                max="10"
+              />
+              <span>mEq/kg/d</span>
+            </li>
+            <li>
+              <label for="acna">Acetato</label>
+              <input
+                type="number"
+                name="Acetato"
+                id="acna"
+                step="0.1"
+                min="0"
+                max="5"
+              />
+              <span>mEq/kg/d</span>
+            </li>
+            <li>
+              <label
+                for="k"
+                title="Señalar aporte total de potasio (KCl + Fosfato de Potasio)"
+                >Potasio</label
+              >
+              <input
+                type="number"
+                name="Potasio"
+                id="k"
+                step="0.1"
+                min="0"
+                max="10"
+              />
+              <span>mEq/kg/d</span>
+            </li>
+            <li>
+              <label for="po">Fosfato</label>
+              <input
+                type="number"
+                name="Fosfato"
+                id="po"
+                step="0.1"
+                min="0"
+                max="5"
+              />
+              <span>mEq/kg/d</span>
+            </li>
+            <li>
+              <label for="ca">Calcio</label>
+              <input
+                type="number"
+                name="Calcio"
+                id="ca"
+                step="0.1"
+                min="0"
+                max="15"
+              />
+              <span>mg/kg/d</span>
+            </li>
+            <li>
+              <label for="mg">Magnesio</label>
+              <input
+                type="number"
+                name="Magnesio"
+                id="mg"
+                step="0.1"
+                min="0"
+                max="1"
+              />
+              <span>mEq/kg/d</span>
+            </li>
+            <li>
+              <label for="zn">Zinc</label>
+              <input
+                type="number"
+                name="Zinc"
+                id="zn"
+                step="0.01"
+                min="0"
+                max="1"
+              />
+              <span>ug/kg/d</span>
+            </li>
+            <li>
+              <label for="vits">Vitaminas</label>
+              <input list="decision" name="Vitaminas" id="vits" size="4" />
+            </li>
+            <li>
+              <label for="oe">Oligoelementos</label>
+              <input list="decision" name="Oligoelementos" id="oe" size="4" />
+            </li>
+            <li>
+              <label for="ciclado">Ciclado</label>
+              <input list="decision" name="Ciclado" id="ciclado" size="4" />
+            </li>
+            <datalist id="decision">
+              <option>Si</option>
+              <option>No</option>
+            </datalist>
+            <li>
+              <label for="hrsusp" hidden="true">Horas de suspensión</label>
+              <input
+                type="number"
+                name="Horas de suspensión"
+                id="hrsusp"
+                max="12"
+                hidden="true"
+              />
+              <span hidden="true">horas</span>
+            </li>
+          </ul>
+        </div>
+        <div class="receta">
+          <p id="volprep"></p>
+          <ul>
+            <li>Glucosa 50%</li>
+            <li>Aminoácidos Infantil 10%</li>
+            <li>Lípidos 20% SMOF Lipid</li>
+            <li>Sodio Cloruro 10%</li>
+            <li>Potasio Cloruro 10%</li>
+            <li>Magnesio Sulfato 25%</li>
+            <li>Zinc Sulfato 0.88%</li>
+            <li>Calcio Gluconato 10%</li>
+            <li>Bifosfato Potasio 15%</li>
+            <li>Acetato Sodio 30%</li>
+            <li>Vitaminas hidrosolubles</li>
+            <li>Vitaminas liposolubles</li>
+            <li>Oligoelementos</li>
+            <li>Agua</li>
+            <li>Volumen total</li>
+            <li>Osmolaridad Calculada</li>
+          </ul>
+        </div>
+        <div class="infocalorias">
+          <table id="caloriasaportadas">
+            <thead>
+              <th></th>
+              <th>Cal/kg</th>
+              <th>% Cal</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Carbohidratos</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Proteinas</th>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Lípidos</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <table id="caloríasrequeridas">
+            <thead>
+              <th></th>
+              <th>Schoffield</th>
+              <th>OMS</th>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Calorías Requeridas</th>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="profesionales">
+          <label for="medico">Médico</label>
+          <input type="text" name="" id="medico" />
+          <label for="quimico">Químico</label>
+          <input type="text" id="quimico" name="" />
+        </div>
+        <input type="reset" name="Restablecer" />
+        <input type="submit" name="Enviar" disabled="true" />
+      </form>
+    </div>
+    <footer>
+      <pre>
 			<a href="mailto:jrsepulv@gmail.com">Juan Sepúlveda</a>
 			Codigo libre
 			Sólo para fines educativos y de prueba.
 			No para uso clínico, aún.
 			<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licencia de Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Nutricion Parenteral Web</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Juan Sepulveda</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0 Internacional License</a>.
 		</pre>
-	</footer>
-	<script src="js/myscripts.js"></script>
-</body>
+    </footer>
+    <script src="js/myscripts.js"></script>
+  </body>
 </html>
