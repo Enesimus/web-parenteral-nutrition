@@ -4,7 +4,7 @@
 	2.1 validacion de run
 3. creacion de prescripcion
 	3.1 calculo de edad : segun edad expresar en días, meses o años*/
-	
+
 let estimaEdad1 = document.querySelector("#fechanacimiento");
 let estimaEdad2 = document.querySelector("#fechaactual");
 
@@ -12,60 +12,56 @@ estimaEdad1.oninput = calcEdad;
 estimaEdad2.oninput = calcEdad;
 
 function calcEdad() {
-	let fN = new Date(document.getElementById("fechanacimiento").value);
+  let fN = new Date(document.getElementById("fechanacimiento").value);
   let fA = new Date(document.getElementById("fechaactual").value);
   let edadMs = fA - fN;
-  let edadDias = edadMs / (1000*60*60*24);
-  let edadSem = Math.floor(edadDias / 7);
+  let edadDias = edadMs / (1000 * 60 * 60 * 24);
   let edadMes = Math.floor(edadDias / 30.44);
   let edadYr = Math.floor(edadDias / 365.25);
   let edMesRes = edadMes - edadYr * 12;
-     if (edadDias <= 30) {
-          document.getElementById("edad").innerHTML =
-            edadDias + " Días.";
-        } else {
-          if (edadDias > 30 && edadYr <= 1) {
-            document.getElementById("edad").innerHTML =
-              edadMes + " Meses.";
-          } else {
-            if (edadYr > 1 && edadYr <= 6) {
-              document.getElementById("edad").innerHTML =
-                edadYr + " Años " + edMesRes + " Meses.";
-            } else {
-              document.getElementById("edad").innerHTML =
-                edadYr + " Años.";
-            }
-          }
-        }
+  if (edadDias <= 30) {
+    document.getElementById("edad").innerHTML = edadDias + " Días.";
+  } else {
+    if (edadDias > 30 && edadYr <= 1) {
+      document.getElementById("edad").innerHTML = edadMes + " Meses.";
+    } else {
+      if (edadYr > 1 && edadYr <= 6) {
+        document.getElementById("edad").innerHTML =
+          edadYr + " Años " + edMesRes + " Meses.";
+      } else {
+        document.getElementById("edad").innerHTML = edadYr + " Años.";
+      }
+    }
+  }
 }
 
-	/*3.2 calculo de superficie corporal*/
+/*3.2 calculo de superficie corporal*/
 
-	let calcSupCorp1 = document.querySelector("#peso");
-	let calcSupCorp2 = document.querySelector("#talla");
+let calcSupCorp1 = document.querySelector("#peso");
+let calcSupCorp2 = document.querySelector("#talla");
 
-	calcSupCorp1.oninput = supCorp;
-	calcSupCorp2.oninput = supCorp;
+calcSupCorp1.oninput = supCorp;
+calcSupCorp2.oninput = supCorp;
 
-      function supCorp() {
-        let p = (document.getElementById("peso").value * 10) / 10;
-        let t = document.getElementById("talla").value;
-        if (p !== "" || p !== 0) {
-          if (t !== "") {
-            let sc = parseFloat(Math.sqrt((p * t) / 3600).toPrecision(2));
-            document.getElementById("scorp").innerHTML = sc + " m<sup>2</sup>";
-          } else {
-            let scSt = ((p * 4 + 7) / (90 + p)).toPrecision(2);
-            document.getElementById("scorp").innerHTML = scSt + " m<sup>2</sup>";
-          }
-        } else {
-          alert("Introduzca el peso del paciente");
-        }
+function supCorp() {
+  let p = (document.getElementById("peso").value * 10) / 10;
+  let t = document.getElementById("talla").value;
+  if (p !== "" || p !== 0) {
+    if (t !== "") {
+      let sc = parseFloat(Math.sqrt((p * t) / 3600).toPrecision(2));
+      document.getElementById("scorp").innerHTML = sc + " m<sup>2</sup>";
+    } else {
+      let scSt = ((p * 4 + 7) / (90 + p)).toPrecision(2);
+      document.getElementById("scorp").innerHTML = scSt + " m<sup>2</sup>";
+    }
+  } else {
+    alert("Introduzca el peso del paciente");
+  }
 
-        // document.getElementById("sc1").innerHTML = sc1 + " m<sup>2</sup>";
-      }
+  // document.getElementById("sc1").innerHTML = sc1 + " m<sup>2</sup>";
+}
 
-	/*3.3 ingreso de datos
+/*3.3 ingreso de datos
 		3.3.1 volumen deseado: ml/kg o ml/m2
 		3.3.2 carga de glucosa: mg/kg/min
 		3.3.3 proteinas: g/kg/d
@@ -82,9 +78,46 @@ function calcEdad() {
 		3.3.14 ciclado: si o no
 	3.4 Calculo volumenes
 		3.4.1 calculo de volumen a preparar: considerando 50ml adicionales para bajada.
-		3.4.2 calculo de volumen de glucosa (50%)
-		3.4.3 c volumen AA
-		3.4.4 c volumen lipidos
+		*/
+let volDes = document.querySelector("#voldes");
+volDes.oninput = calcVolPrep;
+volDes.onchange = calcVolPrep;
+
+function calcVolPrep() {
+  let v = document.getElementById("voldes").value;
+  let p = document.getElementById("peso").value;
+  let volPrep = v * p + 50;
+  document.getElementById("volprep").innerHTML =
+    "Volumen a preparar es " + volPrep + " mL";
+}
+/*
+		3.4.2 calculo de volumen de glucosa
+*/
+let glucentrada = document.querySelector("#cg");
+
+glucentrada.oninput = calcGluc50;
+glucentrada.onchange = calcGluc50;
+
+function calcGluc50() {
+  let g = document.getElementById("cg").value;
+  let p = document.getElementById("peso").value;
+  let volGluc50 = g * p * 2.88;
+  document.getElementById("gluc50").innerHTML = volGluc50 + " mL.";
+}
+/*
+		3.4.3 c volumen AA*/
+let aaentrada = document.querySelector("#aa10");
+aaentrada.oninput = calcAA10;
+aaentrada.onchange = calcAA10;
+
+function calcAA10() {
+  let g = document.getElementById("aa10").value;
+  let p = document.getElementById("peso").value;
+  let adds = document.getElementById("volprep");
+  let volAA10 = g * p * 2.88;
+  document.getElementById("aa10").innerHTML = volAA10 + " mL.";
+}
+/*		3.4.4 c volumen lipidos
 		3.4.5 c volumen nacl
 		3.4.6 c volumen kcl
 		3.4.7 c voluman mgso4
