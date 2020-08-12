@@ -118,15 +118,7 @@
             /><br />
 
             <label for="Femenino">Femenino</label>
-            <input
-              type="radio"
-              name="Sexo"
-              value="Femenino"
-              id="Femenino"
-            /><br />
-
-            <label for="Otro">Otro</label>
-            <input type="radio" name="Sexo" value="Otro" id="Otro" />
+            <input type="radio" name="Sexo" value="Femenino" id="Femenino" />
           </fieldset>
         </div>
         <!-- Inicio de la prescripción-->
@@ -147,7 +139,7 @@
               <label for="cg">Carga de glucosa</label>
               <input
                 type="number"
-                name="Carga Glucosa"
+                name="CargaGlucosa"
                 id="cg"
                 step="0.1"
                 min="0"
@@ -303,22 +295,22 @@
         <div class="receta">
           <p id="volprep"></p>
           <ul>
-            <li>Glucosa 50%</li>
-            <li>Aminoácidos Infantil 10%</li>
-            <li>Lípidos 20% SMOF Lipid</li>
-            <li>Sodio Cloruro 10%</li>
-            <li>Potasio Cloruro 10%</li>
-            <li>Magnesio Sulfato 25%</li>
-            <li>Zinc Sulfato 0.88%</li>
-            <li>Calcio Gluconato 10%</li>
-            <li>Bifosfato Potasio 15%</li>
-            <li>Acetato Sodio 30%</li>
-            <li>Vitaminas hidrosolubles</li>
-            <li>Vitaminas liposolubles</li>
-            <li>Oligoelementos</li>
-            <li>Agua</li>
-            <li>Volumen total</li>
-            <li>Osmolaridad Calculada</li>
+            <li>Glucosa 50% <span id="gluc50"></span></li>
+            <li>Aminoácidos Infantil 10%<span id="aa10"></span></li>
+            <li>Lípidos 20% SMOF Lipid<span id="lip20"></span></li>
+            <li>Sodio Cloruro 10%<span id="nacl10"></span></li>
+            <li>Potasio Cloruro 10%<<span id="kcl10"></span>/li></li>
+            <li>Magnesio Sulfato 25%<span id="mgso25"></span></li>
+            <li>Zinc Sulfato 0.88%<span id="znso08"></span></li>
+            <li>Calcio Gluconato 10%<span id="cagluc10"></span></li>
+            <li>Bifosfato Potasio 15%<span id="kpo15"></span></li>
+            <li>Acetato Sodio 30%<span id="acna10"></span></li>
+            <li>Vitaminas hidrosolubles<span id="vithidro"></span></li>
+            <li>Vitaminas liposolubles<span id="vitlipo"></span></li>
+            <li>Oligoelementos<span id="oe"></span></li>
+            <li>Agua<span id="h2o"></span></li>
+            <li>Volumen total<span id="voltot"></span></li>
+            <li>Osmolaridad Calculada<span id="osmcalc"></span></li>
           </ul>
         </div>
         <div class="infocalorias">
