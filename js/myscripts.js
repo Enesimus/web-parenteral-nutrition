@@ -76,9 +76,8 @@ function supCorp() {
 		3.3.12 vitaminas: si o no
 		3.3.13 oligoelementos: si o no
 		3.3.14 ciclado: si o no
-	3.4 Calculo volumenes
-		3.4.1 calculo de volumen a preparar: considerando 50ml adicionales para bajada.
-		*/
+	3.4 Calculo volumenes*/
+//		3.4.1 calculo de volumen a preparar: considerando 50ml adicionales para bajada.
 let volDes = document.querySelector("#voldes");
 volDes.oninput = calcVolPrep;
 volDes.onchange = calcVolPrep;
@@ -87,14 +86,10 @@ function calcVolPrep() {
   let v = document.getElementById("voldes").value;
   let p = document.getElementById("peso").value;
   let volPrep = v * p + 50;
-  document.getElementById("volprep").innerHTML =
-    "Volumen a preparar es " + volPrep + " mL";
+  document.getElementById("volprep").innerHTML = volPrep;
 }
-/*
-		3.4.2 calculo de volumen de glucosa
-*/
+//		3.4.2 calculo de volumen de glucosa
 let glucentrada = document.querySelector("#cg");
-
 glucentrada.oninput = calcGluc50;
 glucentrada.onchange = calcGluc50;
 
@@ -102,34 +97,140 @@ function calcGluc50() {
   let g = document.getElementById("cg").value;
   let p = document.getElementById("peso").value;
   let volGluc50 = g * p * 2.88;
-  document.getElementById("gluc50").innerHTML = volGluc50 + " mL.";
+  document.getElementById("gluc50").innerHTML = volGluc50.toPrecision(4);
 }
-/*
-		3.4.3 c volumen AA*/
-let aaentrada = document.querySelector("#aa10");
+//		3.4.3 c volumen AA
+let aaentrada = document.querySelector("#proteinas");
 aaentrada.oninput = calcAA10;
 aaentrada.onchange = calcAA10;
 
 function calcAA10() {
-  let g = document.getElementById("aa10").value;
+  let prot = document.getElementById("proteinas").value;
   let p = document.getElementById("peso").value;
-  let adds = document.getElementById("volprep");
-  let volAA10 = g * p * 2.88;
-  document.getElementById("aa10").innerHTML = volAA10 + " mL.";
+  let volAA10 = prot * p * 2.88;
+  document.getElementById("aa10").innerHTML = volAA10.toPrecision(3);
 }
-/*		3.4.4 c volumen lipidos
-		3.4.5 c volumen nacl
-		3.4.6 c volumen kcl
-		3.4.7 c voluman mgso4
-		3.4.8 c volumen znso4
-		3.4.9 c volumen glucca
-		3.4.10 c volumen fosfK
-		3.4.11 c volumen acna
-		3.4.12 c volumen vit hidrosolubles
-		3.4.13 c volumen vit liposolubles
-		3.4.14 c volumen oligoelementos
-		3.4.15 c volumen agua (>=0)
-	3.5 Calculo osmolaridades
+//		3.4.4 c volumen lipidos
+let lipentrada = document.querySelector("#lipidos");
+lipentrada.onchange = calcLip20;
+lipentrada.oninput = calcLip20;
+
+function calcLip20() {
+  let p = document.getElementById("peso").value;
+  let a = document.getElementById("lipidos").value;
+  let volLip20 = p * a * 5;
+  document.getElementById("lip20").innerHTML = volLip20.toPrecision(3);
+}
+//	3.4.5 c volumen nacl
+let naentrada = document.querySelector("#na");
+let acnaentrada = document.querySelector("#acna");
+naentrada.onchange = calcNaCl10;
+naentrada.oninput = calcNaCl10;
+acnaentrada.onchange = calcNaCl10;
+acnaentrada.oninput = calcNaCl10;
+function calcNaCl10() {
+  let p = document.getElementById("peso").value;
+  let n = document.getElementById("na").value;
+  let a = document.getElementById("acna").value;
+  if (a >= 0 && a !== "") {
+    let volNaCl10ac = ((n - a) * p) / 1.75;
+    let volAcNa = ((a * p) / 2.2).toPrecision(2);
+    document.getElementById("nacl10").innerHTML = volNaCl10ac.toPrecision(2);
+    document.getElementById("acna10").innerHTML = volAcNa;
+  } else {
+    let volNaCl10 = (n * p) / 1.75;
+    document.getElementById("nacl10").innerHTML = volNaCl10.toPrecision(2);
+  }
+}
+//		3.4.6 c volumen kcl
+let kentrada = document.querySelector("#k");
+let po4entrada = document.querySelector("#po");
+kentrada.onchange = calcKCl10;
+kentrada.oninput = calcKCl10;
+po4entrada.onchange = calcKCl10;
+po4entrada.oninput = calcKCl10;
+function calcKCl10() {
+  let p = document.getElementById("peso").value;
+  let k = document.getElementById("k").value;
+  let po4 = document.getElementById("po").value;
+  if (po4 >= 0 && po4 !== "") {
+    let volKCl10po = ((k - po4) * p) / 1.34;
+    let volKPO15 = (po4 * p) / 1.1;
+    document.getElementById("kcl10").innerHTML = volKCl10po.toPrecision(2);
+    document.getElementById("kpo15").innerHTML = volKPO15.toPrecision(2);
+  } else {
+    let volKCl10 = (k * p) / 1.34;
+    document.getElementById("nacl10").innerHTML = volKCl10.toPrecision(2);
+  }
+}
+//		3.4.7 c voluman mgso4
+let mgentrada = document.querySelector("#mg");
+mgentrada.onchange = calcMg25;
+mgentrada.oninput = calcMg25;
+
+function calcMg25() {
+  let p = document.getElementById("peso").value;
+  let a = document.getElementById("mg").value;
+  let volMg25 = (p * a) / 2;
+  document.getElementById("mgso25").innerHTML = volMg25.toPrecision(2);
+}
+//		3.4.8 c volumen znso4
+let znentrada = document.querySelector("#zn");
+znentrada.onchange = calcZn08;
+znentrada.oninput = calcZn08;
+
+function calcZn08() {
+  let p = document.getElementById("peso").value;
+  let a = document.getElementById("zn").value;
+  let volZn08 = (p * a) / 1000 / 2;
+  document.getElementById("lip20").innerHTML = volZn08.toPrecision(2);
+}
+//		3.4.9 c volumen glucca
+let caentrada = document.querySelector("#ca");
+caentrada.onchange = calcCaGluc;
+caentrada.oninput = calcCaGluc;
+
+function calcCaGluc() {
+  let p = document.getElementById("peso").value;
+  let a = document.getElementById("ca").value;
+  let volCaGluc = (p * a) / 9;
+  document.getElementById("cagluc10").innerHTML = volCaGluc.toPrecision(2);
+}
+//		3.4.10 c volumen fosfK
+//		3.4.11 c volumen acna
+//		3.4.12 c volumen vit hidrosolubles
+let vitentrada = document.querySelector("#vits");
+vitentrada.onchange = calcVits;
+vitentrada.oninput = calcVits;
+
+function calcVits(){
+	let p = documen.getElementById("peso").value;
+	let volVitHidro;
+	let volVitLipo;
+	if (vitentrada === "Si") {
+		if (p < 10){
+			 volVitHidro = p.toPrecision(2);
+		} else {
+			volVitHidro = 10;
+		}
+		document.getElementById("vithidro").innerHTML = volVitHidro;
+	} else {
+		
+	}
+}
+
+if (vitentrada === "Si") {
+	if ()
+	
+} else {
+	
+}
+//		3.4.13 c volumen vit liposolubles
+//		3.4.14 c volumen oligoelementos
+let oeentrada = document.querySelector("#oe");
+
+//		3.4.15 c volumen agua (>=0)
+/*	3.5 Calculo osmolaridades
 		3.5.1 alerta via central o periferica
 	3.6 compatibilidad calcio fosforo
 	3.7 limites estabilidad 
