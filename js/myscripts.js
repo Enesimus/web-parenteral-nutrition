@@ -203,28 +203,32 @@ let vitentrada = document.querySelector("#vits");
 vitentrada.onchange = calcVits;
 vitentrada.oninput = calcVits;
 
-function calcVits(){
-	let p = documen.getElementById("peso").value;
-	let volVitHidro;
-	let volVitLipo;
-	if (vitentrada === "Si") {
-		if (p < 10){
-			 volVitHidro = p.toPrecision(2);
-		} else {
-			volVitHidro = 10;
-		}
-		document.getElementById("vithidro").innerHTML = volVitHidro;
-	} else {
-		
-	}
+function calcVits() {
+  let p = document.getElementById("peso").value;
+  let volVitHidro;
+  let volVitLipo;
+  if (vitentrada === "Si") {
+    if (p < 10) {
+      volVitHidro = p.toPrecision(2);
+    } else {
+      volVitHidro = 10;
+    }
+    document.getElementById("vithidro").innerHTML = volVitHidro;
+  } else {
+    document.getElementById("vithidro").innerHTML = 0;
+  }
+  if (vitentrada === "Si") {
+    if (p < 2.5) {
+      volVitLipo = (p * 2).toPrecision(2);
+    } else {
+      volVitLipo = 10;
+    }
+    document.getElementById("vitlipo").innerHTML = volVitLipo;
+  } else {
+    document.getElementById("vitlipo").innerHTML = 0;
+  }
 }
 
-if (vitentrada === "Si") {
-	if ()
-	
-} else {
-	
-}
 //		3.4.13 c volumen vit liposolubles
 //		3.4.14 c volumen oligoelementos
 let oeentrada = document.querySelector("#oe");
