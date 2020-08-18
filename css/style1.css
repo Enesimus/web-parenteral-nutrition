@@ -1,61 +1,82 @@
 body {
-	font-family: 'Oxygen', sans-serif;
-	background-color: linear-gradient(45deg, rgb(34,45,67), 45%, rgb(67,34,45), 99%);
+  font-family: "Oxygen", sans-serif;
+  background-color: linear-gradient(
+    45deg,
+    rgb(34, 45, 67),
+    45%,
+    rgb(67, 34, 45),
+    99%
+  );
 }
 
 h1 {
-	padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 20px;
 }
 
 div {
-	margin: 3px;
-	padding: 5px;
-	border-style: solid;
-	border-color: #b32d00;
-	border-radius: 10px;
+  margin: 3px;
+  padding: 3px;
+  border-style: solid;
+  border-color: #b32d00;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 pre {
-	text-align: right;
-	font-size: 7px;
+  text-align: right;
+  font-size: 7px;
 }
 
-form, input {
-	font-size:11px;
-	font-family: 'Oxygen', sans-serif;
+form,
+input {
+  font-size: 11px;
+  font-family: "Oxygen", sans-serif;
 }
 
 li {
-	list-style-type: none;
+  list-style-type: none;
+  padding: 1px 0px 2px 0px;
 }
 
-table, th, td {
-	border: 1px solid #b32d00;
-	border-radius: 5px;
+table,
+th,
+td {
+  border: 1px solid #b32d00;
+  border-radius: 5px;
 }
 
 #encabezado {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 #sexo {
-	width: 100px;
+  width: 100px;
 }
 
-#nombres, #appater, #apmater {
-	text-transform:uppercase;
+#nombres,
+#appater,
+#apmater {
+  text-transform: uppercase;
 }
 
 #prescripcion {
-	width: 40%;
+  width: 30%;
 }
 
-#prescription, label {
-	text-align:right;
+#prescription,
+label {
+  text-align: right;
 }
 
+.receta {
+  font-size: 12px;
+  font-weight: bold;
+  width: 40%;
+}
 
-
+span.receta {
+  font-size: 20px;
+}
