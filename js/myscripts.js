@@ -8,8 +8,16 @@
 let estimaEdad1 = document.querySelector("#fechanacimiento");
 let estimaEdad2 = document.querySelector("#fechaactual");
 
+estimaEdad2.onload = fechaHoy;
 estimaEdad1.oninput = calcEdad;
+estimaEdad1.onchange = calcEdad;
+estimaEdad2.onchange = calcEdad;
 estimaEdad2.oninput = calcEdad;
+
+function fechaHoy() {
+  let a = new Date();
+  document.getElementById("fechaactual").value.innerHTML = a;
+}
 
 function calcEdad() {
   let fN = new Date(document.getElementById("fechanacimiento").value);
@@ -90,6 +98,7 @@ function calcVolPrep() {
   let p = document.getElementById("peso").value;
   let volPrep = v * p + 50;
   document.getElementById("volprep").innerHTML = volPrep;
+  return volPrep;
 }
 //		3.4.2 calculo de volumen de glucosa
 let glucentrada = document.querySelector("#cg");
@@ -102,6 +111,7 @@ function calcGluc50() {
   let p = document.getElementById("peso").value;
   let volGluc50 = g * p * 2.88;
   document.getElementById("gluc50").innerHTML = volGluc50.toPrecision(4);
+  return volGluc50;
 }
 //		3.4.3 c volumen AA
 let aaentrada = document.querySelector("#proteinas");
@@ -114,6 +124,7 @@ function calcAA10() {
   let p = document.getElementById("peso").value;
   let volAA10 = prot * p * 2.88;
   document.getElementById("aa10").innerHTML = volAA10.toPrecision(3);
+  return volAA10;
 }
 //		3.4.4 c volumen lipidos
 let lipentrada = document.querySelector("#lipidos");
@@ -126,6 +137,7 @@ function calcLip20() {
   let a = document.getElementById("lipidos").value;
   let volLip20 = p * a * 5;
   document.getElementById("lip20").innerHTML = volLip20.toPrecision(3);
+  return volLip20;
 }
 //	3.4.5 c volumen nacl
 let naentrada = document.querySelector("#na");
@@ -145,9 +157,11 @@ function calcNaCl10() {
     let volAcNa = ((a * p) / 2.2).toPrecision(2);
     document.getElementById("nacl10").innerHTML = volNaCl10ac.toPrecision(2);
     document.getElementById("acna10").innerHTML = volAcNa;
+    return parseFloat(volNaCl10ac) + parseFloat(volAcNa);
   } else {
     let volNaCl10 = (n * p) / 1.75;
     document.getElementById("nacl10").innerHTML = volNaCl10.toPrecision(2);
+    return volNaCl10;
   }
 }
 //		3.4.6 c volumen kcl
@@ -168,9 +182,11 @@ function calcKCl10() {
     let volKPO15 = (po4 * p) / 1.1;
     document.getElementById("kcl10").innerHTML = volKCl10po.toPrecision(2);
     document.getElementById("kpo15").innerHTML = volKPO15.toPrecision(2);
+    return volKCl10po + volKPO15;
   } else {
     let volKCl10 = (k * p) / 1.34;
     document.getElementById("nacl10").innerHTML = volKCl10.toPrecision(2);
+    return volKCl10;
   }
 }
 //		3.4.7 c voluman mgso4
@@ -184,6 +200,7 @@ function calcMg25() {
   let a = document.getElementById("mg").value;
   let volMg25 = (p * a) / 2;
   document.getElementById("mgso25").innerHTML = volMg25.toPrecision(2);
+  return volMg25;
 }
 //		3.4.8 c volumen znso4
 let znentrada = document.querySelector("#zn");
@@ -196,6 +213,7 @@ function calcZn08() {
   let a = document.getElementById("zn").value;
   let volZn08 = (p * a) / 1000 / 2;
   document.getElementById("znso08").innerHTML = volZn08.toPrecision(2);
+  return volZn08;
 }
 //		3.4.9 c volumen glucca
 let caentrada = document.querySelector("#ca");
@@ -208,6 +226,7 @@ function calcCaGluc() {
   let a = document.getElementById("ca").value;
   let volCaGluc = (p * a) / 9;
   document.getElementById("cagluc10").innerHTML = volCaGluc.toPrecision(2);
+  return volCaGluc;
 }
 //		3.4.10 c volumen fosfK
 //		3.4.11 c volumen acna
@@ -241,6 +260,7 @@ function calcVits() {
   } else {
     document.getElementById("vitlipo").innerHTML = 0;
   }
+  return parseFloat(volVitHidro) + parseFloat(volVitLipo);
 }
 
 //		3.4.13 c volumen vit liposolubles
@@ -264,21 +284,26 @@ function calcOe() {
   } else {
     document.getElementById("oel").innerHTML = 0;
   }
+  return parseFloat(volOe);
 }
 //		3.4.15 c volumen agua (>=0)
 let volumenSolutos = document.querySelectorAll(".volumen");
 volumenSolutos.onchange = calcVolSolut;
 
 function calcVolSolut() {
-  let listaSolutos = Array.from(volumenSolutos);
-  let i;
-  let volSolutos;
-  for (i = 0; i < listaSolutos.length; i++) {
-    volSolutos += listaSolutos[i];
-  }
-  let volprep = document.getElementById("volprep").value;
-  let volAgua = volprep - volSolutos;
-  document.getElementById("h2o").innerHTML = volAgua;
+  let solutVolCalc =
+    parseFloat(calcGluc50()) +
+    parseFloat(calcAA10()) +
+    parseFloat(calcLip20()) +
+    parseFloat(calcNaCl10()) +
+    parseFloat(calcKCl10()) +
+    parseFloat(calcMg25()) +
+    parseFloat(calcVits()) +
+    parseFloat(calcOe()) +
+    parseFloat(calcZn08());
+  // console.log(solutVolCalc);
+  let volAgua = calcVolPrep() - solutVolCalc;
+  document.getElementById("h2o").innerHTML = volAgua.toPrecision(4);
 }
 /*	3.5 Calculo osmolaridades
 		3.5.1 alerta via central o periferica
