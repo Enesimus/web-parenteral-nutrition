@@ -100,7 +100,8 @@ volDes.onchange = calcVolSolut;
 
 function calcVolPrep() {
   let v = document.getElementById("voldes").value;
-  let volPrep = v * peso() + 50;
+  //se adiciona volumen extra para bajada 30 ml segun acuerdo.
+  let volPrep = v * peso() + 30;
   document.getElementById("volprep").innerHTML = Math.ceil(volPrep);
   return volPrep;
 }
@@ -113,8 +114,8 @@ glucentrada.onchange = calcVolSolut;
 
 function calcGluc50() {
   let g = document.getElementById("cg").value;
-  let volGluc50 = g * peso() * 2.88;
-  document.getElementById("gluc50").innerHTML = Math.ceil(volGluc50);
+  let volGluc50 = g * peso() * 2.88 * (1 + 30 / calcVolPrep());
+  document.getElementById("gluc50").innerHTML = volGluc50.toFixed(0);
   return volGluc50;
 }
 //		3.4.3 c volumen AA
@@ -126,7 +127,7 @@ aaentrada.onchange = calcVolSolut;
 
 function calcAA10() {
   let prot = document.getElementById("proteinas").value;
-  let volAA10 = prot * peso() * 2.88;
+  let volAA10 = prot * peso() * 2.88 * (1 + 30 / calcVolPrep());
   document.getElementById("aa10").innerHTML = volAA10.toFixed(0);
   return volAA10;
 }
@@ -139,7 +140,7 @@ lipentrada.onchange = calcVolSolut;
 
 function calcLip20() {
   let a = document.getElementById("lipidos").value;
-  let volLip20 = peso() * a * 5;
+  let volLip20 = peso() * a * 5 * (1 + 30 / calcVolPrep());
   document.getElementById("lip20").innerHTML = volLip20.toFixed(0);
   return volLip20;
 }
@@ -158,13 +159,13 @@ function calcNaCl10() {
   let n = document.getElementById("na").value;
   let a = document.getElementById("acna").value;
   if (a >= 0 && a !== "") {
-    let volNaCl10ac = ((n - a) * peso()) / 1.75;
-    let volAcNa = (a * peso()) / 2.2;
+    let volNaCl10ac = (((n - a) * peso()) / 1.75) * (1 + 30 / calcVolPrep());
+    let volAcNa = ((a * peso()) / 2.2) * (1 + 30 / calcVolPrep());
     document.getElementById("nacl10").innerHTML = volNaCl10ac.toFixed(1);
     document.getElementById("acna10").innerHTML = volAcNa.toFixed(1);
     return parseFloat(volNaCl10ac) + parseFloat(volAcNa);
   } else {
-    let volNaCl10 = (n * peso()) / 1.75;
+    let volNaCl10 = ((n * peso()) / 1.75) * (1 + 30 / calcVolPrep());
     document.getElementById("nacl10").innerHTML = volNaCl10.toFixed(1);
     return volNaCl10;
   }
@@ -184,13 +185,13 @@ function calcKCl10() {
   let k = document.getElementById("k").value;
   let po4 = document.getElementById("po").value;
   if (po4 >= 0 && po4 !== "") {
-    let volKCl10po = ((k - po4) * peso()) / 1.34;
-    let volKPO15 = (po4 * peso()) / 1.1;
+    let volKCl10po = (((k - po4) * peso()) / 1.34) * (1 + 30 / calcVolPrep());
+    let volKPO15 = ((po4 * peso()) / 1.1) * (1 + 30 / calcVolPrep());
     document.getElementById("kcl10").innerHTML = volKCl10po.toFixed(1);
     document.getElementById("kpo15").innerHTML = volKPO15.toFixed(1);
     return volKCl10po + volKPO15;
   } else {
-    let volKCl10 = (k * peso()) / 1.34;
+    let volKCl10 = ((k * peso()) / 1.34) * (1 + 30 / calcVolPrep());
     document.getElementById("nacl10").innerHTML = volKCl10.toFixed(1);
     return volKCl10;
   }
@@ -204,7 +205,7 @@ mgentrada.onchange = calcVolSolut;
 
 function calcMg25() {
   let a = document.getElementById("mg").value;
-  let volMg25 = (peso() * a) / 2;
+  let volMg25 = ((peso() * a) / 2) * (1 + 30 / calcVolPrep());
   document.getElementById("mgso25").innerHTML = volMg25.toFixed(1);
   return volMg25;
 }
@@ -217,7 +218,7 @@ calcSupCorp1.onchange = calcZn08;
 
 function calcZn08() {
   let a = document.getElementById("zn").value;
-  let volZn08 = (peso() * a) / 1000 / 2;
+  let volZn08 = ((peso() * a) / 1000 / 2) * (1 + 30 / calcVolPrep());
   document.getElementById("znso08").innerHTML = volZn08.toFixed(2);
   return volZn08;
 }
@@ -230,7 +231,7 @@ calcSupCorp1.onchange = calcCaGluc;
 
 function calcCaGluc() {
   let a = document.getElementById("ca").value;
-  let volCaGluc = (peso() * a) / 9;
+  let volCaGluc = ((peso() * a) / 9) * (1 + 30 / calcVolPrep());
   document.getElementById("cagluc10").innerHTML = volCaGluc.toFixed(1);
   return volCaGluc;
 }
@@ -248,7 +249,7 @@ function calcVits() {
   let volVitLipo;
   if (vitentrada.value === "Si" && vitentrada !== "") {
     if (peso() < 10) {
-      volVitHidro = (peso() * 10) / 10;
+      volVitHidro = ((peso() * 10) / 10) * (1 + 30 / calcVolPrep());
     } else {
       volVitHidro = 10;
     }
@@ -260,7 +261,7 @@ function calcVits() {
   //		3.4.13 c volumen vit liposolubles
   if (vitentrada.value === "Si" && vitentrada !== "") {
     if (peso() < 2.5) {
-      volVitLipo = peso() * 2;
+      volVitLipo = peso() * 2 * (1 + 30 / calcVolPrep());
     } else {
       volVitLipo = 10;
     }
@@ -287,7 +288,7 @@ function calcOe() {
     } else {
       document.getElementById("oeid").innerHTML = "9 Oligoelementos Addaven ";
     }
-    volOe = peso() * 0.02;
+    volOe = peso() * 0.02 * (1 + 30 / calcVolPrep());
     document.getElementById("oel").innerHTML = volOe.toFixed(2);
   } else {
     volOe = 0;
