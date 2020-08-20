@@ -27,11 +27,14 @@ function calcEdad() {
   let edMesRes = edadMes - edadYr * 12;
   if (edadDias <= 30) {
     document.getElementById("edad").innerHTML = edadDias + " Días.";
+    document.getElementById("tiponp").innerHTML = "Neonatal";
   } else {
     if (edadDias > 30 && edadYr <= 1) {
       document.getElementById("edad").innerHTML = edadMes + " Meses.";
+      document.getElementById("tiponp").innerHTML = "Pediátrica";
     } else {
       if (edadYr > 1 && edadYr <= 6) {
+        document.getElementById("tiponp").innerHTML = "Pediátrica";
         if (edadMes === 1) {
           document.getElementById("edad").innerHTML =
             edadYr + " Años " + edMesRes + " Mes.";
@@ -41,6 +44,11 @@ function calcEdad() {
         }
       } else {
         document.getElementById("edad").innerHTML = edadYr + " Años.";
+      }
+      if (edadYr > 15) {
+        document.getElementById("tiponp").innerHTML = "Adultos";
+      } else {
+        document.getElementById("tiponp").innerHTML = "Pediátrica";
       }
     }
   }
@@ -350,6 +358,8 @@ function calcOsmolaridad() {
 }
 
 let ciclEntrada = document.querySelector("#ciclado");
+document.querySelector("#hrsusp").onchange = calcVelocInf;
+document.querySelector("#hrsusp").oninput = calcVelocInf;
 ciclEntrada.oninput = calcVelocInf;
 ciclEntrada.onchange = calcVelocInf;
 
@@ -362,25 +372,23 @@ function calcVelocInf() {
   } else {
     let hrCicl = document.getElementById("hrsusp").value;
     if (hrCicl !== "") {
-      let velCicl1 = (calcVolPrep() - 30) / (4 * (24 - hrcicl) * 10);
+      let velCicl1 = (calcVolPrep() - 30) / (4 * (24 - hrCicl) - 10);
       let velCicl2 = velCicl1 * 2;
       let velCicl3 = velCicl1 * 4;
-      document.getElementById("vela").innerHTML =
-        "Iniciar a " +
-        velCicl1.toFixed(1) +
-        " mL/hora por 1 hora, luego aumentar a " +
-        velCicl2.toFixed(1) +
-        " mL/hora por 1 hora, luego aumentar a " +
-        velCicl3 +
-        " mL/hora por " +
-        (20 - hrCicl) +
-        " horas; luego disminuir a " +
-        velCicl2.toFixed(1) +
-        " mL/hora por 1 hora, luego disminuir a " +
-        velCicl1.toFixed(1) +
-        " mL/hora por 1 hora y luego suspender por " +
-        hrCicl +
-        " horas";
+      document.getElementById("vela").innerHTML = `Iniciar a ${velCicl1.toFixed(
+        1
+      )} mL/hora por 1 hora, <br> luego aumentar a ${velCicl2.toFixed(
+        1
+      )} mL/hora por 1 hora, <br> luego aumentar a ${velCicl3.toFixed(
+        1
+      )} mL/hora por ${
+        20 - hrCicl
+      } horas; <br> luego disminuir a ${velCicl2.toFixed(
+        1
+      )} mL/hora por 1 hora, <br> luego disminuir a ${velCicl1.toFixed(
+        1
+      )} mL/hora por 1 hora y, <br> luego suspender por ${hrCicl} horas`;
+      document.getElementById("vela2").innerHTML = "";
     } else {
       alert(
         "Ingrese valor de horas que desea suspender la nutricion parenteral"
