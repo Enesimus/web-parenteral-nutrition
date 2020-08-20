@@ -323,7 +323,6 @@ function calcVolSolut() {
   }
 }
 //	3.5 Calculo osmolaridades
-
 function calcOsmolaridad() {
   let na = document.getElementById("na").value;
   let k = document.getElementById("k").value;
@@ -348,7 +347,6 @@ function calcOsmolaridad() {
     alert("Osmolaridad Excesiva");
   }
 }
-
 /*		
 	3.6 compatibilidad calcio fosforo
 	3.7 limites estabilidad 
