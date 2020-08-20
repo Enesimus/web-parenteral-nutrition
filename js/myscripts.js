@@ -318,6 +318,7 @@ function calcVolSolut() {
   document.getElementById("h2o").innerHTML = volAgua.toFixed(0);
   document.getElementById("voltot").innerHTML = voltTot.toFixed(0);
   calcOsmolaridad();
+  calcVelocInf();
   if (volAgua <= 0) {
     alert("Volumen incorrecto de solutos");
   }
@@ -345,6 +346,46 @@ function calcOsmolaridad() {
   }
   if (osmolaridad > 1500) {
     alert("Osmolaridad Excesiva");
+  }
+}
+
+let ciclEntrada = document.querySelector("#ciclado");
+ciclEntrada.oninput = calcVelocInf;
+ciclEntrada.onchange = calcVelocInf;
+
+function calcVelocInf() {
+  let cicl = document.getElementById("ciclado").value;
+  if (cicl === "No" || cicl === "") {
+    let a = (calcVolPrep() - 30) / 24;
+    document.getElementById("vela").innerHTML = a.toFixed(1);
+    document.getElementById("vela2").innerHTML = " mL/hora.";
+  } else {
+    let hrCicl = document.getElementById("hrsusp").value;
+    if (hrCicl !== "") {
+      let velCicl1 = (calcVolPrep() - 30) / (4 * (24 - hrcicl) * 10);
+      let velCicl2 = velCicl1 * 2;
+      let velCicl3 = velCicl1 * 4;
+      document.getElementById("vela").innerHTML =
+        "Iniciar a " +
+        velCicl1.toFixed(1) +
+        " mL/hora por 1 hora, luego aumentar a " +
+        velCicl2.toFixed(1) +
+        " mL/hora por 1 hora, luego aumentar a " +
+        velCicl3 +
+        " mL/hora por " +
+        (20 - hrCicl) +
+        " horas; luego disminuir a " +
+        velCicl2.toFixed(1) +
+        " mL/hora por 1 hora, luego disminuir a " +
+        velCicl1.toFixed(1) +
+        " mL/hora por 1 hora y luego suspender por " +
+        hrCicl +
+        " horas";
+    } else {
+      alert(
+        "Ingrese valor de horas que desea suspender la nutricion parenteral"
+      );
+    }
   }
 }
 /*		
