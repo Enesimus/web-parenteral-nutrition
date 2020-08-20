@@ -1,5 +1,11 @@
 # web-parenteral-nutrition
-Desarrollo de una pagina web que calcule una nutricion parenteral pediatrica
+
+Desarrollo de una pagina web que calcule una nutricion parenteral pediatrica, neonatal o para adultos.
+
+Inicialmente pensada en el contexto del Centro de Responsabilidad de Pediatría del Complejo Asistencial Dr. Víctor Ríos Ruiz de la ciudad de Los Ángeles, Chile.
+
+Intento emular la experiencia con una planilla de cálculo, pero sumando la potencia de la programación en JavaScript.
+
 Ha sido complejo entender como funciona la interaccion entre js y el formulario, me siento atascado en el cálculo de la edad, probablemente porque deseo que sea mas automatico de lo que estoy preparado para programar.
 
 Finalmente decidi empezar por definir las variables de entrada, y avanzar en las diferentes funciones que deberá tener la página.

@@ -1,4 +1,4 @@
-                        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-CL">
   <head>
     <title>Nutrición Parenteral</title>
@@ -24,7 +24,7 @@
             alt="Logotipo del Complejo Asistencial Doctor Víctor Ríos Ruiz"
             height="75px"
         /></a>
-        <h1>Nutrición Parenteral</h1>
+        <h1>Nutrición Parenteral <span id="tiponp"></span></h1>
       </div>
     </header>
     <div id="formulario">
@@ -43,7 +43,6 @@
           <label for="anexo">Anexo</label>
           <input type="tel" name="Anexo" id="anexo" size="8" />
         </div>
-
         <div class="infopaciente">
           <label for="run">RUN</label>
           <input
@@ -53,10 +52,8 @@
             pattern="([0-9]).{8}-([0-9][k,K]).{1}"
             size="10"
           />
-
           <label for="nombres">Nombres</label>
           <input type="text" name="Nombres" id="nombres" size="30" />
-
           <label for="appater">Apellido paterno</label>
           <input type="text" name="Apellido Paterno" id="appater" size="30" />
 
@@ -68,6 +65,9 @@
             id="apmater"
             size="30"
           /><br />
+          <label for="diagnos">Diagnóstico</label>
+
+          <input type="text" name="Diagnostico" id="diagnos" size="45" /><br />
         </div>
 
         <div class="infopaciente">
@@ -134,7 +134,8 @@
                 max="2500"
                 value="100"
               />
-              <span>mL/kg</span>
+              <span>mL/kg/día</span>
+              <span id="voldesm2"></span><span> mL/m<sup>2</sup>/día</span>
             </li>
             <li>
               <label for="cg">Carga de glucosa</label>
@@ -147,7 +148,7 @@
                 max="15"
                 value="5"
               />
-              <span>g/kg/min</span>
+              <span>mg/kg/min</span>
             </li>
             <li>
               <label for="proteinas">Proteínas</label>
@@ -160,7 +161,7 @@
                 max="5"
                 value="2"
               />
-              <span>g/kg/d</span>
+              <span>g/kg/día</span>
             </li>
             <li>
               <label for="lipidos">Lípidos</label>
@@ -173,7 +174,7 @@
                 max="10"
                 value="1"
               />
-              <span>g/kg/d</span>
+              <span>g/kg/día</span>
             </li>
             <li>
               <label
@@ -190,7 +191,7 @@
                 max="10"
                 value="4"
               />
-              <span>mEq/kg/d</span>
+              <span>mEq/kg/día</span>
             </li>
             <li>
               <label for="acna">Acetato</label>
@@ -203,7 +204,7 @@
                 min="0"
                 max="5"
               />
-              <span>mEq/kg/d</span>
+              <span>mEq/kg/día</span>
             </li>
             <li>
               <label
@@ -220,7 +221,7 @@
                 max="10"
                 value="3"
               />
-              <span>mEq/kg/d</span>
+              <span>mEq/kg/día</span>
             </li>
             <li>
               <label for="po">Fosfato</label>
@@ -233,7 +234,7 @@
                 min="0"
                 max="5"
               />
-              <span>mEq/kg/d</span>
+              <span>mEq/kg/día</span>
             </li>
             <li>
               <label for="ca">Calcio</label>
@@ -246,7 +247,7 @@
                 max="15"
                 value="6"
               />
-              <span>mg/kg/d</span>
+              <span>mg/kg/día</span>
             </li>
             <li>
               <label for="mg">Magnesio</label>
@@ -259,7 +260,7 @@
                 max="1"
                 value="0.5"
               />
-              <span>mEq/kg/d</span>
+              <span>mEq/kg/día</span>
             </li>
             <li>
               <label for="zn">Zinc</label>
@@ -267,12 +268,12 @@
                 type="number"
                 name="Zinc"
                 id="zn"
-                step="0.01"
+                step="1"
                 min="0"
-                max="1"
+                max="300"
                 value="50"
               />
-              <span>ug/kg/d</span>
+              <span>mcg/kg/día</span>
             </li>
             <li>
               <label for="vits">Vitaminas</label>
@@ -291,71 +292,87 @@
               <option>No</option>
             </datalist>
             <li>
-              <label for="hrsusp" hidden="true" class="ciclado"
-                >Horas de suspensión</label
-              >
+              <label for="hrsusp" class="ciclado">Horas de suspensión</label>
               <input
                 type="number"
                 name="Horas de suspensión"
                 id="hrsusp"
                 max="12"
-                hidden="true"
                 class="ciclado"
               />
-              <span hidden="true" class="ciclado">horas</span>
+              <span class="ciclado">horas</span>
             </li>
           </ul>
         </div>
+        <!-- Receta -->
         <div class="receta">
           <ul>
-            <li>Volumen a preparar <span id="volprep"></span> mL</li>
-            <li>Glucosa 50% <span id="gluc50" class="volumen"></span> mL.</li>
+            <li>Volumen a preparar <span id="volprep" size="8"></span> mL</li>
+            <li>
+              Glucosa 50% <span id="gluc50" class="volumen" size="8"></span> mL.
+            </li>
             <li>
               Aminoácidos Infantil 10%
-              <span id="aa10" class="volumen"></span> mL.
+              <span id="aa10" class="volumen" size="8"></span> mL.
             </li>
             <li>
               Lípidos 20% SMOF Lipid
-              <span id="lip20" class="volumen"></span> mL.
+              <span id="lip20" class="volumen" size="8"></span> mL.
             </li>
             <li>
-              Sodio Cloruro 10% <span id="nacl10" class="volumen"></span> mL
+              Sodio Cloruro 10%
+              <span id="nacl10" class="volumen" size="8"></span> mL
             </li>
             <li>
-              Potasio Cloruro 10% <span id="kcl10" class="volumen"></span> mL
+              Potasio Cloruro 10%
+              <span id="kcl10" class="volumen" size="8"></span> mL
             </li>
             <li>
-              Magnesio Sulfato 25% <span id="mgso25" class="volumen"></span> mL
+              Magnesio Sulfato 25%
+              <span id="mgso25" class="volumen" size="8"></span> mL
             </li>
             <li>
-              Zinc Sulfato 0.88% <span id="znso08" class="volumen"></span> mL
+              Zinc Sulfato 0.88%
+              <span id="znso08" class="volumen" size="8"></span> mL
             </li>
             <li>
               Calcio Gluconato 10%
-              <span id="cagluc10" class="volumen"></span> mL
+              <span id="cagluc10" class="volumen" size="8"></span> mL
             </li>
             <li>
-              Bifosfato Potasio 15% <span id="kpo15" class="volumen"></span> mL
+              Bifosfato Potasio 15%
+              <span id="kpo15" class="volumen" size="8"></span> mL
             </li>
             <li>
-              Acetato Sodio 30% <span id="acna10" class="volumen"></span> mL
+              Acetato Sodio 30%
+              <span id="acna10" class="volumen" size="8"></span> mL
             </li>
             <li>
               Vitaminas hidrosolubles
-              <span id="vithidro" class="volumen"></span> mL
+              <span id="vithidro" class="volumen" size="8"></span> mL
             </li>
             <li>
               Vitaminas liposolubles
-              <span id="vitlipo" class="volumen"></span> mL
+              <span id="vitlipo" class="volumen" size="8"></span> mL
             </li>
             <li>
               <span id="oeid">Oligoelementos</span>
-              <span id="oel" class="volumen"></span> mL
+              <span id="oel" class="volumen" size="8"></span> mL
             </li>
-            <li>Agua <span id="h2o" class="volumen2"></span> mL</li>
-            <li>Volumen total <span id="voltot"></span> mL</li>
-            <li>Osmolaridad Calculada <span id="osmcalc"></span></li>
+            <li id="agua">
+              Agua <span id="h2o" class="volumen2" size="8"></span> mL
+            </li>
+            <li>Volumen total <span id="voltot" size="8"></span> mL</li>
+            <li>Osmolaridad Calculada <span id="osmcalc" size="8"></span></li>
           </ul>
+          <!-- <p id="volsolut"></p> -->
+        </div>
+        <div id="viaadministracion">
+          <span id="va"></span>
+        </div>
+        <div id="velocadmin">
+          Velocidad de Infusión
+          <p><span id="vela"></span><span id="vela2"></span></p>
         </div>
         <div class="infocalorias">
           <table id="caloriasaportadas">
@@ -367,18 +384,18 @@
             <tbody>
               <tr>
                 <th>Carbohidratos</th>
-                <td></td>
-                <td></td>
+                <td id="chcalkg"></td>
+                <td id="chcalporc"></td>
               </tr>
               <tr>
                 <th>Proteinas</th>
-                <td></td>
-                <td></td>
+                <td id="pcalkg"></td>
+                <td id="pcalporc"></td>
               </tr>
               <tr>
                 <th>Lípidos</th>
-                <td></td>
-                <td></td>
+                <td id="lipcalkg"></td>
+                <td id="lipcalporc"></td>
               </tr>
             </tbody>
           </table>
@@ -391,8 +408,8 @@
             <tbody>
               <tr>
                 <th>Calorías Requeridas</th>
-                <td></td>
-                <td></td>
+                <td id="calschoff"></td>
+                <td id="caloms"></td>
               </tr>
             </tbody>
           </table>
@@ -403,8 +420,9 @@
           <label for="quimico">Químico</label>
           <input type="text" id="quimico" name="" />
         </div>
-        <input type="reset" name="Restablecer" />
+        <!--         <input type="reset" name="Restablecer" />
         <input type="submit" name="Enviar" disabled="true" />
+ -->
       </form>
     </div>
     <footer>

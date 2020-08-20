@@ -3,27 +3,25 @@
 2. creacion de paciente
 	2.1 validacion de run
 3. creacion de prescripcion
-	3.1 calculo de edad : segun edad expresar en días, meses o años*/
+  // 3.1 calculo de edad : segun edad expresar en días, meses o años*/
+function peso() {
+  let p = (document.getElementById("peso").value * 10) / 10;
+  return p;
+}
 
 let estimaEdad1 = document.querySelector("#fechanacimiento");
 let estimaEdad2 = document.querySelector("#fechaactual");
 
-estimaEdad2.onload = fechaHoy;
 estimaEdad1.oninput = calcEdad;
 estimaEdad1.onchange = calcEdad;
 estimaEdad2.onchange = calcEdad;
 estimaEdad2.oninput = calcEdad;
 
-function fechaHoy() {
-  let a = new Date();
-  document.getElementById("fechaactual").value.innerHTML = a;
-}
-
 function calcEdad() {
   let fN = new Date(document.getElementById("fechanacimiento").value);
   let fA = new Date(document.getElementById("fechaactual").value);
   let edadMs = fA - fN;
-  let edadDias = edadMs / (1000 * 60 * 60 * 24);
+  let edadDias = edadMs / 86400000;
   let edadMes = Math.floor(edadDias / 30.44);
   let edadYr = Math.floor(edadDias / 365.25);
   let edMesRes = edadMes - edadYr * 12;
@@ -34,8 +32,13 @@ function calcEdad() {
       document.getElementById("edad").innerHTML = edadMes + " Meses.";
     } else {
       if (edadYr > 1 && edadYr <= 6) {
-        document.getElementById("edad").innerHTML =
-          edadYr + " Años " + edMesRes + " Meses.";
+        if (edadMes === 1) {
+          document.getElementById("edad").innerHTML =
+            edadYr + " Años " + edMesRes + " Mes.";
+        } else {
+          document.getElementById("edad").innerHTML =
+            edadYr + " Años " + edMesRes + " Meses.";
+        }
       } else {
         document.getElementById("edad").innerHTML = edadYr + " Años.";
       }
@@ -54,18 +57,19 @@ calcSupCorp2.oninput = supCorp;
 calcSupCorp2.onchange = supCorp;
 
 function supCorp() {
-  let p = (document.getElementById("peso").value * 10) / 10;
   let t = document.getElementById("talla").value;
-  if (p !== "" || p !== 0) {
+  if (peso() !== "" || peso() !== 0) {
     if (t !== "") {
-      let sc = parseFloat(Math.sqrt((p * t) / 3600).toPrecision(2));
-      document.getElementById("scorp").innerHTML = sc + " m<sup>2</sup>";
+      let sc = parseFloat(Math.sqrt((peso() * t) / 3600));
+      document.getElementById("scorp").innerHTML =
+        sc.toFixed(2) + " m<sup>2</sup>";
     } else {
-      let scSt = ((p * 4 + 7) / (90 + p)).toPrecision(2);
-      document.getElementById("scorp").innerHTML = scSt + " m<sup>2</sup>";
+      let scSt = (peso() * 4 + 7) / (90 + peso());
+      document.getElementById("scorp").innerHTML =
+        scSt.toFixed(2) + " m<sup>2</sup>";
     }
   } else {
-    alert("Introduzca el peso del paciente");
+    window.alert("Introduzca el peso del paciente");
   }
 
   // document.getElementById("sc1").innerHTML = sc1 + " m<sup>2</sup>";
@@ -92,12 +96,13 @@ let volDes = document.querySelector("#voldes");
 volDes.oninput = calcVolPrep;
 volDes.onchange = calcVolPrep;
 calcSupCorp1.onchange = calcVolPrep;
+volDes.onchange = calcVolSolut;
 
 function calcVolPrep() {
   let v = document.getElementById("voldes").value;
-  let p = document.getElementById("peso").value;
-  let volPrep = v * p + 50;
-  document.getElementById("volprep").innerHTML = volPrep;
+  //se adiciona volumen extra para bajada 30 ml segun acuerdo.
+  let volPrep = v * peso() + 30;
+  document.getElementById("volprep").innerHTML = Math.ceil(volPrep);
   return volPrep;
 }
 //		3.4.2 calculo de volumen de glucosa
@@ -105,12 +110,12 @@ let glucentrada = document.querySelector("#cg");
 glucentrada.oninput = calcGluc50;
 glucentrada.onchange = calcGluc50;
 calcSupCorp1.onchange = calcGluc50;
+glucentrada.onchange = calcVolSolut;
 
 function calcGluc50() {
   let g = document.getElementById("cg").value;
-  let p = document.getElementById("peso").value;
-  let volGluc50 = g * p * 2.88;
-  document.getElementById("gluc50").innerHTML = volGluc50.toPrecision(4);
+  let volGluc50 = g * peso() * 2.88 * (1 + 30 / calcVolPrep());
+  document.getElementById("gluc50").innerHTML = volGluc50.toFixed(0);
   return volGluc50;
 }
 //		3.4.3 c volumen AA
@@ -118,12 +123,12 @@ let aaentrada = document.querySelector("#proteinas");
 aaentrada.oninput = calcAA10;
 aaentrada.onchange = calcAA10;
 calcSupCorp1.onchange = calcAA10;
+aaentrada.onchange = calcVolSolut;
 
 function calcAA10() {
   let prot = document.getElementById("proteinas").value;
-  let p = document.getElementById("peso").value;
-  let volAA10 = prot * p * 2.88;
-  document.getElementById("aa10").innerHTML = volAA10.toPrecision(3);
+  let volAA10 = prot * peso() * 2.88 * (1 + 30 / calcVolPrep());
+  document.getElementById("aa10").innerHTML = volAA10.toFixed(0);
   return volAA10;
 }
 //		3.4.4 c volumen lipidos
@@ -131,12 +136,12 @@ let lipentrada = document.querySelector("#lipidos");
 lipentrada.onchange = calcLip20;
 lipentrada.oninput = calcLip20;
 calcSupCorp1.onchange = calcLip20;
+lipentrada.onchange = calcVolSolut;
 
 function calcLip20() {
-  let p = document.getElementById("peso").value;
   let a = document.getElementById("lipidos").value;
-  let volLip20 = p * a * 5;
-  document.getElementById("lip20").innerHTML = volLip20.toPrecision(3);
+  let volLip20 = peso() * a * 5 * (1 + 30 / calcVolPrep());
+  document.getElementById("lip20").innerHTML = volLip20.toFixed(0);
   return volLip20;
 }
 //	3.4.5 c volumen nacl
@@ -147,20 +152,21 @@ naentrada.oninput = calcNaCl10;
 acnaentrada.onchange = calcNaCl10;
 acnaentrada.oninput = calcNaCl10;
 calcSupCorp1.onchange = calcNaCl10;
+naentrada.onchange = calcVolSolut;
+acnaentrada.onchange = calcVolSolut;
 
 function calcNaCl10() {
-  let p = document.getElementById("peso").value;
   let n = document.getElementById("na").value;
   let a = document.getElementById("acna").value;
   if (a >= 0 && a !== "") {
-    let volNaCl10ac = ((n - a) * p) / 1.75;
-    let volAcNa = ((a * p) / 2.2).toPrecision(2);
-    document.getElementById("nacl10").innerHTML = volNaCl10ac.toPrecision(2);
-    document.getElementById("acna10").innerHTML = volAcNa;
+    let volNaCl10ac = (((n - a) * peso()) / 1.75) * (1 + 30 / calcVolPrep());
+    let volAcNa = ((a * peso()) / 2.2) * (1 + 30 / calcVolPrep());
+    document.getElementById("nacl10").innerHTML = volNaCl10ac.toFixed(1);
+    document.getElementById("acna10").innerHTML = volAcNa.toFixed(1);
     return parseFloat(volNaCl10ac) + parseFloat(volAcNa);
   } else {
-    let volNaCl10 = (n * p) / 1.75;
-    document.getElementById("nacl10").innerHTML = volNaCl10.toPrecision(2);
+    let volNaCl10 = ((n * peso()) / 1.75) * (1 + 30 / calcVolPrep());
+    document.getElementById("nacl10").innerHTML = volNaCl10.toFixed(1);
     return volNaCl10;
   }
 }
@@ -172,20 +178,21 @@ kentrada.oninput = calcKCl10;
 po4entrada.onchange = calcKCl10;
 po4entrada.oninput = calcKCl10;
 calcSupCorp1.onchange = calcKCl10;
+kentrada.onchange = calcVolSolut;
+po4entrada.onchange = calcVolSolut;
 
 function calcKCl10() {
-  let p = document.getElementById("peso").value;
   let k = document.getElementById("k").value;
   let po4 = document.getElementById("po").value;
   if (po4 >= 0 && po4 !== "") {
-    let volKCl10po = ((k - po4) * p) / 1.34;
-    let volKPO15 = (po4 * p) / 1.1;
-    document.getElementById("kcl10").innerHTML = volKCl10po.toPrecision(2);
-    document.getElementById("kpo15").innerHTML = volKPO15.toPrecision(2);
+    let volKCl10po = (((k - po4) * peso()) / 1.34) * (1 + 30 / calcVolPrep());
+    let volKPO15 = ((po4 * peso()) / 1.1) * (1 + 30 / calcVolPrep());
+    document.getElementById("kcl10").innerHTML = volKCl10po.toFixed(1);
+    document.getElementById("kpo15").innerHTML = volKPO15.toFixed(1);
     return volKCl10po + volKPO15;
   } else {
-    let volKCl10 = (k * p) / 1.34;
-    document.getElementById("nacl10").innerHTML = volKCl10.toPrecision(2);
+    let volKCl10 = ((k * peso()) / 1.34) * (1 + 30 / calcVolPrep());
+    document.getElementById("nacl10").innerHTML = volKCl10.toFixed(1);
     return volKCl10;
   }
 }
@@ -194,38 +201,38 @@ let mgentrada = document.querySelector("#mg");
 mgentrada.onchange = calcMg25;
 mgentrada.oninput = calcMg25;
 calcSupCorp1.onchange = calcMg25;
+mgentrada.onchange = calcVolSolut;
 
 function calcMg25() {
-  let p = document.getElementById("peso").value;
   let a = document.getElementById("mg").value;
-  let volMg25 = (p * a) / 2;
-  document.getElementById("mgso25").innerHTML = volMg25.toPrecision(2);
+  let volMg25 = ((peso() * a) / 2) * (1 + 30 / calcVolPrep());
+  document.getElementById("mgso25").innerHTML = volMg25.toFixed(1);
   return volMg25;
 }
 //		3.4.8 c volumen znso4
 let znentrada = document.querySelector("#zn");
 znentrada.onchange = calcZn08;
+znentrada.onchange = calcVolSolut;
 znentrada.oninput = calcZn08;
 calcSupCorp1.onchange = calcZn08;
 
 function calcZn08() {
-  let p = document.getElementById("peso").value;
   let a = document.getElementById("zn").value;
-  let volZn08 = (p * a) / 1000 / 2;
-  document.getElementById("znso08").innerHTML = volZn08.toPrecision(2);
+  let volZn08 = ((peso() * a) / 1000 / 2) * (1 + 30 / calcVolPrep());
+  document.getElementById("znso08").innerHTML = volZn08.toFixed(2);
   return volZn08;
 }
 //		3.4.9 c volumen glucca
 let caentrada = document.querySelector("#ca");
 caentrada.onchange = calcCaGluc;
+caentrada.onchange = calcVolSolut;
 caentrada.oninput = calcCaGluc;
 calcSupCorp1.onchange = calcCaGluc;
 
 function calcCaGluc() {
-  let p = document.getElementById("peso").value;
   let a = document.getElementById("ca").value;
-  let volCaGluc = (p * a) / 9;
-  document.getElementById("cagluc10").innerHTML = volCaGluc.toPrecision(2);
+  let volCaGluc = ((peso() * a) / 9) * (1 + 30 / calcVolPrep());
+  document.getElementById("cagluc10").innerHTML = volCaGluc.toFixed(1);
   return volCaGluc;
 }
 //		3.4.10 c volumen fosfK
@@ -233,80 +240,116 @@ function calcCaGluc() {
 //		3.4.12 c volumen vit hidrosolubles
 let vitentrada = document.querySelector("#vits");
 vitentrada.onchange = calcVits;
+vitentrada.onchange = calcVolSolut;
 vitentrada.oninput = calcVits;
 calcSupCorp1.onchange = calcVits;
 
 function calcVits() {
-  let p = document.getElementById("peso").value;
   let volVitHidro;
   let volVitLipo;
-  if (vitentrada.value === "Si") {
-    if (p < 10) {
-      volVitHidro = ((p * 10) / 10).toPrecision(3);
+  if (vitentrada.value === "Si" && vitentrada !== "") {
+    if (peso() < 10) {
+      volVitHidro = ((peso() * 10) / 10) * (1 + 30 / calcVolPrep());
     } else {
       volVitHidro = 10;
     }
-    document.getElementById("vithidro").innerHTML = volVitHidro;
+    document.getElementById("vithidro").innerHTML = volVitHidro.toFixed(1);
   } else {
-    document.getElementById("vithidro").innerHTML = 0;
+    volVitHidro = 0;
+    document.getElementById("vithidro").innerHTML = volVitHidro;
   }
-  if (vitentrada.value === "Si") {
-    if (p < 2.5) {
-      volVitLipo = (p * 2).toPrecision(3);
+  //		3.4.13 c volumen vit liposolubles
+  if (vitentrada.value === "Si" && vitentrada !== "") {
+    if (peso() < 2.5) {
+      volVitLipo = peso() * 2 * (1 + 30 / calcVolPrep());
     } else {
       volVitLipo = 10;
     }
-    document.getElementById("vitlipo").innerHTML = volVitLipo;
+    document.getElementById("vitlipo").innerHTML = volVitLipo.toFixed(1);
   } else {
-    document.getElementById("vitlipo").innerHTML = 0;
+    volVitLipo = 0;
+    document.getElementById("vitlipo").innerHTML = volVitLipo;
   }
   return parseFloat(volVitHidro) + parseFloat(volVitLipo);
 }
 
-//		3.4.13 c volumen vit liposolubles
 //		3.4.14 c volumen oligoelementos
 let oeentrada = document.querySelector("#oe");
 oeentrada.onchange = calcOe;
+oeentrada.onchange = calcVolSolut;
 oeentrada.oninput = calcOe;
 calcSupCorp1.onchange = calcOe;
 
 function calcOe() {
-  let p = document.getElementById("peso").value;
   let volOe;
   if (oeentrada.value === "Si") {
-    if (p < 15) {
+    if (peso() < 15) {
       document.getElementById("oeid").innerHTML = "4 Oligoelementos Tracelyte ";
     } else {
       document.getElementById("oeid").innerHTML = "9 Oligoelementos Addaven ";
     }
-    volOe = (p * 0.02).toPrecision(3);
-    document.getElementById("oel").innerHTML = volOe;
+    volOe = peso() * 0.02 * (1 + 30 / calcVolPrep());
+    document.getElementById("oel").innerHTML = volOe.toFixed(2);
   } else {
-    document.getElementById("oel").innerHTML = 0;
+    volOe = 0;
+    document.getElementById("oel").innerHTML = volOe;
   }
   return parseFloat(volOe);
 }
 //		3.4.15 c volumen agua (>=0)
 let volumenSolutos = document.querySelectorAll(".volumen");
 volumenSolutos.onchange = calcVolSolut;
+calcSupCorp1.onchange = calcVolSolut;
 
 function calcVolSolut() {
   let solutVolCalc =
-    parseFloat(calcGluc50()) +
-    parseFloat(calcAA10()) +
-    parseFloat(calcLip20()) +
-    parseFloat(calcNaCl10()) +
-    parseFloat(calcKCl10()) +
-    parseFloat(calcMg25()) +
-    parseFloat(calcVits()) +
-    parseFloat(calcOe()) +
-    parseFloat(calcZn08());
-  // console.log(solutVolCalc);
+    calcGluc50() +
+    calcAA10() +
+    calcLip20() +
+    calcNaCl10() +
+    calcKCl10() +
+    calcCaGluc() +
+    calcMg25() +
+    calcVits() +
+    calcOe() +
+    calcZn08();
   let volAgua = calcVolPrep() - solutVolCalc;
-  document.getElementById("h2o").innerHTML = volAgua.toPrecision(4);
+  let voltTot = solutVolCalc + volAgua;
+  document.getElementById("h2o").innerHTML = volAgua.toFixed(0);
+  document.getElementById("voltot").innerHTML = voltTot.toFixed(0);
+  calcOsmolaridad();
+  if (volAgua <= 0) {
+    alert("Volumen incorrecto de solutos");
+  }
 }
-/*	3.5 Calculo osmolaridades
-		3.5.1 alerta via central o periferica
+//	3.5 Calculo osmolaridades
+
+function calcOsmolaridad() {
+  let na = document.getElementById("na").value;
+  let k = document.getElementById("k").value;
+  let mg = document.getElementById("mg").value;
+  let osmo =
+    (calcGluc50() * 5) / 2 +
+    (calcAA10() * 1000) / 885 +
+    (calcLip20() * 100) / 38 +
+    na * peso() * 2 +
+    k * peso() * 2 +
+    calcCaGluc() * 0.46 +
+    mg * peso();
+  let osmolaridad = (osmo * 1000) / calcVolPrep();
+  document.getElementById("osmcalc").innerHTML = osmolaridad.toFixed(0);
+  //3.5.1 alerta via central o periferica
+  if (osmolaridad >= 700) {
+    document.getElementById("va").innerHTML = "USO EXCLUSIVO VIA CENTRAL";
+  } else {
+    document.getElementById("va").innerHTML = "USO PERIFERICO PERMITIDO";
+  }
+  if (osmolaridad > 1500) {
+    alert("Osmolaridad Excesiva");
+  }
+}
+
+/*		
 	3.6 compatibilidad calcio fosforo
 	3.7 limites estabilidad 
 		3.7.1 mg
