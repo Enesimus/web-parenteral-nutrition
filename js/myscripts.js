@@ -327,6 +327,7 @@ function calcVolSolut() {
   document.getElementById("voltot").innerHTML = voltTot.toFixed(0);
   calcOsmolaridad();
   calcVelocInf();
+  calcCalorias();
   if (volAgua <= 0) {
     alert("Volumen incorrecto de solutos");
   }
@@ -411,8 +412,25 @@ function calcVelocInf() {
 		3.9.1 totales
 		3.9.2 glucosa
 		3.9.3 aminoacidos
-		3.9.4 lipidos
-	3.10 calculo de porcentaje de calorias
+    3.9.4 lipidos*/
+  
+function calcCalorias(){
+  const calLipid =11;
+  const calAA = 5;
+  const calGluc = 3.4;
+let aporteKgCalGluc = (document.getElementById("cg").value * 1.44)* calGluc;
+let aporteKgCalAA = (document.getElementById("proteinas").value) * calAA;
+let aporteKgCalLipid = (document.getElementById("lipidos").value) * calLipid;
+let aporteKgCal = aporteKgCalGluc + aporteKgCalAA + aporteKgCalLipid;
+document.getElementById("chcalkg").innerHTML = aporteKgCalGluc.toFixed(0);
+document.getElementById("pcalkg").innerHTML = aporteKgCalAA.toFixed(0);
+document.getElementById("lipcalkg").innerHTML = aporteKgCalLipid.toFixed(0);
+document.getElementById("totcalkg").innerHTML = aporteKgCal.toFixed(0);
+document.getElementById("chcalporc").innerHTML = (aporteKgCalGluc *100 / aporteKgCal).toFixed(0);
+document.getElementById("pcalporc").innerHTML = (aporteKgCalAA*100 /aporteKgCal).toFixed(0);
+document.getElementById("lipcalporc").innerHTML = (aporteKgCalLipid*100/aporteKgCal).toFixed(0);
+}    
+/*	3.10 calculo de porcentaje de calorias
 		3.10.1 cal proteicas
 		3.10.2 cal lipidos
 		3.10.3 cal glucosa
