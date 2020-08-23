@@ -1,11 +1,80 @@
 /* Funciones de Nutricion Parenteral 
 1. ingreso de usuario
-2. creacion de paciente
-	2.1 validacion de run
+2. creacion de paciente*/
+let paciente = {
+run : "",
+fechaNacimiento :"",
+nombre : "",
+apellidoPaterno :"",
+apellidoMaterno : "",
+edad : "",
+peso: "",
+talla:"",
+sexo : "",
+};
+
+let prescripcion = {
+volumenDeseado : "",
+CargaGlucosa : "",
+Proteinas:"",
+Lipidos:"",
+Sodio:"",
+Acetato:"",
+Potasio: "",
+Fosfato: "", 
+Calcio: "",
+Magnesio:"",
+Zinc:"",
+Vitaminas:"",
+Oligoelementos :"",
+};
+
+let receta = {
+VolumenAPreparar : "",
+Glu50:"",
+AA:"",
+Lip:"",
+NaCl: "",
+KCl:"",
+ZnSO:"",
+CaGlu:"",
+BifK:"",
+Acna: "",
+VitHidro:"",
+VitLipo :"",
+OligoelementosTipo: "",
+OligoelementosVol:"",
+Agua:"",
+Medico:""
+};
+
+let run = document.querySelector("#run") ;
+run.oninput = function(){
+let r = document.querySelector("#run").value;
+paciente.run = r;
+}
+let nom = document.querySelector("#nombres") ;
+run.oninput = function(){
+let r = document.querySelector("#nombres").value;
+paciente.nombre = r;
+}
+let app = document.querySelector("#appater") ;
+run.oninput = function(){
+let r = document.querySelector("#appater").value;
+paciente.apellidoPaterno = r;
+}
+let apm = document.querySelector("#apmater") ;
+run.oninput = function(){
+let r = document.querySelector("#apmater").value;
+paciente.apellidoMaterno = r;
+}
+
+/*2.1 validacion de run
 3. creacion de prescripcion
   // 3.1 calculo de edad : segun edad expresar en días, meses o años*/
 function peso() {
   let p = (document.getElementById("peso").value * 10) / 10;
+  paciente.peso = p;
   return p;
 }
 
@@ -20,7 +89,9 @@ estimaEdad2.oninput = calcEdad;
 function calcEdad() {
   let fN = new Date(document.getElementById("fechanacimiento").value);
   let fA = new Date(document.getElementById("fechaactual").value);
+  paciente.fechaNacimiento = fN;
   let edadMs = fA - fN;
+  paciente.edad = edadMs;
   let edadDias = edadMs / 86400000;
   let edadMes = Math.floor(edadDias / 30.44);
   let edadYr = Math.floor(edadDias / 365.25);
@@ -66,6 +137,7 @@ calcSupCorp2.onchange = supCorp;
 
 function supCorp() {
   let t = document.getElementById("talla").value;
+  paciente.talla = parseInt(t,10); 
   if (peso() !== "" || peso() !== 0) {
     if (t !== "") {
       let sc = parseFloat(Math.sqrt((peso() * t) / 3600));
@@ -108,6 +180,7 @@ volDes.onchange = calcVolSolut;
 
 function calcVolPrep() {
   let v = document.getElementById("voldes").value;
+  prescripcion.volumenDeseado=v;
   //se adiciona volumen extra para bajada 30 ml segun acuerdo.
   let volPrep = v * peso() + 30;
   document.getElementById("volprep").innerHTML = Math.ceil(volPrep);
@@ -122,6 +195,7 @@ glucentrada.onchange = calcVolSolut;
 
 function calcGluc50() {
   let g = document.getElementById("cg").value;
+prescripcion.CargaGlucosa = g;
   let volGluc50 = g * peso() * 2.88 * (1 + 30 / calcVolPrep());
   document.getElementById("gluc50").innerHTML = volGluc50.toFixed(0);
   return volGluc50;
