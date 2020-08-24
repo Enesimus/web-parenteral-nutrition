@@ -144,10 +144,12 @@ function supCorp() {
       let sc = parseFloat(Math.sqrt((peso() * t) / 3600));
       document.getElementById("scorp").innerHTML =
         sc.toFixed(2) + " m<sup>2</sup>";
+      return sc;
     } else {
       let scSt = (peso() * 4 + 7) / (90 + peso());
       document.getElementById("scorp").innerHTML =
         scSt.toFixed(2) + " m<sup>2</sup>";
+      return scSt;
     }
   } else {
     window.alert("Introduzca el peso del paciente");
@@ -182,6 +184,8 @@ volDes.onchange = calcVolSolut;
 function calcVolPrep() {
   let v = document.getElementById("voldes").value;
   prescripcion.volumenDeseado = v;
+  let volDesSupCorp = (v * peso()) / supCorp();
+  document.getElementById("voldesm2").innerHTML = volDesSupCorp.toFixed(0);
   //se adiciona volumen extra para bajada 30 ml segun acuerdo.
   let volPrep = v * peso() + 30;
   receta.VolumenAPreparar = volPrep;
