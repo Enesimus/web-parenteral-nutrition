@@ -183,6 +183,7 @@ function calcVolPrep() {
   prescripcion.volumenDeseado=v;
   //se adiciona volumen extra para bajada 30 ml segun acuerdo.
   let volPrep = v * peso() + 30;
+  receta.VolumenAPreparar = volPrep;
   document.getElementById("volprep").innerHTML = Math.ceil(volPrep);
   return volPrep;
 }
@@ -197,6 +198,7 @@ function calcGluc50() {
   let g = document.getElementById("cg").value;
 prescripcion.CargaGlucosa = g;
   let volGluc50 = g * peso() * 2.88 * (1 + 30 / calcVolPrep());
+receta.Glu50 = volGluc50;
   document.getElementById("gluc50").innerHTML = volGluc50.toFixed(0);
   return volGluc50;
 }
@@ -209,7 +211,9 @@ aaentrada.onchange = calcVolSolut;
 
 function calcAA10() {
   let prot = document.getElementById("proteinas").value;
+  prescripcion.Proteinas = prot;
   let volAA10 = prot * peso() * 2.88 * (1 + 30 / calcVolPrep());
+  receta.AA=volAA10;
   document.getElementById("aa10").innerHTML = volAA10.toFixed(0);
   return volAA10;
 }
@@ -222,7 +226,9 @@ lipentrada.onchange = calcVolSolut;
 
 function calcLip20() {
   let a = document.getElementById("lipidos").value;
+prescripcion.Lipidos = a;
   let volLip20 = peso() * a * 5 * (1 + 30 / calcVolPrep());
+  receta.Lip = volLip20;
   document.getElementById("lip20").innerHTML = volLip20.toFixed(0);
   return volLip20;
 }
@@ -240,6 +246,8 @@ acnaentrada.onchange = calcVolSolut;
 function calcNaCl10() {
   let n = document.getElementById("na").value;
   let a = document.getElementById("acna").value;
+prescripcion.Sodio=n;
+prescripcion.Acetato = a;
   if (a >= 0 && a !== "") {
     let volNaCl10ac = (((n - a) * peso()) / 1.75) * (1 + 30 / calcVolPrep());
     let volAcNa = ((a * peso()) / 2.2) * (1 + 30 / calcVolPrep());
@@ -266,6 +274,8 @@ po4entrada.onchange = calcVolSolut;
 function calcKCl10() {
   let k = document.getElementById("k").value;
   let po4 = document.getElementById("po").value;
+prescripcion.Potasio = k;
+prescripcion.Fosfato = po4;
   if (po4 >= 0 && po4 !== "") {
     let volKCl10po = (((k - po4) * peso()) / 1.34) * (1 + 30 / calcVolPrep());
     let volKPO15 = ((po4 * peso()) / 1.1) * (1 + 30 / calcVolPrep());
@@ -287,6 +297,7 @@ mgentrada.onchange = calcVolSolut;
 
 function calcMg25() {
   let a = document.getElementById("mg").value;
+  prescripcion.Magnesio=a;
   let volMg25 = ((peso() * a) / 2) * (1 + 30 / calcVolPrep());
   document.getElementById("mgso25").innerHTML = volMg25.toFixed(1);
   return volMg25;
@@ -300,6 +311,7 @@ calcSupCorp1.onchange = calcZn08;
 
 function calcZn08() {
   let a = document.getElementById("zn").value;
+  prescripcion.Zinc = a;
   let volZn08 = ((peso() * a) / 1000 / 2) * (1 + 30 / calcVolPrep());
   document.getElementById("znso08").innerHTML = volZn08.toFixed(2);
   return volZn08;
@@ -313,6 +325,7 @@ calcSupCorp1.onchange = calcCaGluc;
 
 function calcCaGluc() {
   let a = document.getElementById("ca").value;
+  prescripcion.Calcio=a;
   let volCaGluc = ((peso() * a) / 9) * (1 + 30 / calcVolPrep());
   document.getElementById("cagluc10").innerHTML = volCaGluc.toFixed(1);
   return volCaGluc;
@@ -321,6 +334,7 @@ function calcCaGluc() {
 //		3.4.11 c volumen acna
 //		3.4.12 c volumen vit hidrosolubles
 let vitentrada = document.querySelector("#vits");
+prescripcion.Vitaminas = vitentrada.value;
 vitentrada.onchange = calcVits;
 vitentrada.onchange = calcVolSolut;
 vitentrada.oninput = calcVits;
@@ -357,6 +371,7 @@ function calcVits() {
 
 //		3.4.14 c volumen oligoelementos
 let oeentrada = document.querySelector("#oe");
+prescripcion.Oligoelementos = oeentrada.value;
 oeentrada.onchange = calcOe;
 oeentrada.onchange = calcVolSolut;
 oeentrada.oninput = calcOe;
@@ -367,13 +382,17 @@ function calcOe() {
   if (oeentrada.value === "Si") {
     if (peso() < 15) {
       document.getElementById("oeid").innerHTML = "4 Oligoelementos Tracelyte ";
+      receta.OligoelementosTipo = document.getElementById("oeid").value;
     } else {
       document.getElementById("oeid").innerHTML = "9 Oligoelementos Addaven ";
+      receta.OligoelementosTipo = document.getElementById("oeid").value;
     }
     volOe = peso() * 0.02 * (1 + 30 / calcVolPrep());
+receta.OligoelementosVol = volOe;
     document.getElementById("oel").innerHTML = volOe.toFixed(2);
   } else {
     volOe = 0;
+    receta.OligoelementosVol = volOe;
     document.getElementById("oel").innerHTML = volOe;
   }
   return parseFloat(volOe);
@@ -396,6 +415,7 @@ function calcVolSolut() {
     calcOe() +
     calcZn08();
   let volAgua = calcVolPrep() - solutVolCalc;
+receta.Agua = volAgua;
   let voltTot = solutVolCalc + volAgua;
   document.getElementById("h2o").innerHTML = volAgua.toFixed(0);
   document.getElementById("voltot").innerHTML = voltTot.toFixed(0);
@@ -500,14 +520,16 @@ document.getElementById("chcalkg").innerHTML = aporteKgCalGluc.toFixed(0);
 document.getElementById("pcalkg").innerHTML = aporteKgCalAA.toFixed(0);
 document.getElementById("lipcalkg").innerHTML = aporteKgCalLipid.toFixed(0);
 document.getElementById("totcalkg").innerHTML = aporteKgCal.toFixed(0);
+/* 3.10 calculo de porcentaje de calorias
+		3.10.1 cal proteicas
+		3.10.2 cal lipidos
+    3.10.3 cal glucosa
+    */
 document.getElementById("chcalporc").innerHTML = (aporteKgCalGluc *100 / aporteKgCal).toFixed(0);
 document.getElementById("pcalporc").innerHTML = (aporteKgCalAA*100 /aporteKgCal).toFixed(0);
 document.getElementById("lipcalporc").innerHTML = (aporteKgCalLipid*100/aporteKgCal).toFixed(0);
 }    
-/*	3.10 calculo de porcentaje de calorias
-		3.10.1 cal proteicas
-		3.10.2 cal lipidos
-		3.10.3 cal glucosa
+/*	
 	3.11 calorias no proteicas/gr proteina
 4. repetir prescripcion
 5. calculo de requerimientos caloricos segun edad
@@ -517,3 +539,8 @@ document.getElementById("lipcalporc").innerHTML = (aporteKgCalLipid*100/aporteKg
 	5.2 oms
 	5.3 agregar factor estrés
 */
+let med = document.querySelector("#medico") ;
+med.oninput = function(){
+let r = document.querySelector("#medico").value;
+receta.Medico = r;
+}
