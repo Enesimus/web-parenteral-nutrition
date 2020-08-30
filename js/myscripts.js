@@ -55,20 +55,28 @@ run.oninput = function () {
   paciente.run = r;
 };
 let nom = document.querySelector("#nombres");
-run.oninput = function (nom) {
+nom.oninput = function () {
   let r = nom.value;
+  r = r.toUpperCase();
   paciente.nombre = r;
 };
 let app = document.querySelector("#appater");
-run.oninput = function (app) {
+app.oninput = function () {
   let r = app.value;
+  r = r.toUpperCase();
   paciente.apellidoPaterno = r;
 };
 let apm = document.querySelector("#apmater");
-run.oninput = function (apm) {
+apm.oninput = function () {
   let r = apm.value;
+  r = r.toUpperCase();
   paciente.apellidoMaterno = r;
 };
+let sexo = document.querySelector("#sexo");
+sexo.oninput = function () {
+  let r = sexo.value;
+  paciente.sexo = r;
+}
 
 /*2.1 validacion de run
 3. creacion de prescripcion
