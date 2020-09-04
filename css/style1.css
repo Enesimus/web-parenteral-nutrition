@@ -14,11 +14,11 @@ h1 {
 }
 
 div {
-  margin: 3px;
-  padding: 3px;
+  margin: 2px;
+  padding: 2px;
   border-style: solid;
   border-color: #b32d00;
-  border-radius: 10px;
+  border-radius: 5px;
   display: inline-block;
 }
 
@@ -58,7 +58,8 @@ td {
 
 #nombres,
 #appater,
-#apmater {
+#apmater,
+#diagnos {
   text-transform: uppercase;
 }
 
@@ -85,5 +86,6 @@ label {
 span.receta {
   font-size: 16px;
   text-align: center;
-  background-color: lightcyan;
+  border: 1px solid black;
+  background-color: 1px solid lightblue;
 }

@@ -14,6 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <script src="js/jquery-3.5.1.js"></script>
   </head>
   <body>
     <header>
@@ -66,14 +67,12 @@
             size="30"
           /><br />
           <label for="diagnos">Diagnóstico</label>
-
           <input type="text" name="Diagnostico" id="diagnos" size="45" /><br />
         </div>
 
         <div class="infopaciente">
           <label for="fechanacimiento">Fecha de nacimiento</label>
           <input type="date" name="fecha de nacimiento" id="fechanacimiento" />
-
           <label for="fechaactual">Fecha actual</label>
           <input type="date" name="Fecha Actual" id="fechaactual" />
           <!--<button id="calcEdad">Calcular edad</button>-->
@@ -82,7 +81,6 @@
           <span id="edad"></span>
 
           <label for="peso">Peso</label>
-
           <input
             type="number"
             name="Peso"
@@ -106,17 +104,16 @@
 
           <span id="scorp"></span>
 
-          <fieldset id="sexo">
+          <fieldset id="genero">
             <legend>Sexo</legend>
-
             <label for="Masculino">Masculino</label>
             <input
               type="radio"
               name="Sexo"
               value="Masculino"
               id="Masculino"
-            /><br />
-
+            />
+            <br />
             <label for="Femenino">Femenino</label>
             <input type="radio" name="Sexo" value="Femenino" id="Femenino" />
           </fieldset>
@@ -135,7 +132,9 @@
                 value="100"
               />
               <span>mL/kg/día</span>
-              <span id="voldesm2"></span><span> mL/m<sup>2</sup>/día</span>
+            </li>
+            <li>
+              <span id="voldesm2">____</span><span> mL/m<sup>2</sup>/día</span>
             </li>
             <li>
               <label for="cg">Carga de glucosa</label>
@@ -275,6 +274,15 @@
               />
               <span>mcg/kg/día</span>
             </li>
+<li>
+<!-- <fieldset> 
+  <legend>Vitaminas </legend>
+<label for="vitsi">Si</label>
+<input type="radio" id="vitsi" value="Si">
+<label for="vitno">No</label>
+<input type="radio" id="vitno" value="No">
+</fieldset> -->
+</li>
             <li>
               <label for="vits">Vitaminas</label>
               <input list="decision" name="Vitaminas" id="vits" size="4" />
@@ -398,6 +406,11 @@
               <tr>
                 <th>Lípidos</th>
                 <td id="lipcalkg"></td>
+                <td id="lipcalporc"></td>
+              </tr>
+              <tr>
+                <th>Total</th>
+                <td id="totcalkg"></td>
                 <td id="lipcalporc"></td>
               </tr>
             </tbody>
