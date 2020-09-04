@@ -72,12 +72,34 @@ apm.oninput = function () {
   r = r.toUpperCase();
   paciente.apellidoMaterno = r;
 };
-let sexo = document.querySelector("#sexo");
-sexo.oninput = function () {
-  let r = sexo.value;
-  paciente.sexo = r;
-}
 
+/*let genero = document.getElementsByName("Sexo");
+genero.onclick = asignaGenero;
+genero.onchange = asignaGenero;
+
+function asignaGenero() {
+ var a = document.getElementsByName("Sexo");
+var i="";
+ for (i=0; i<a.length, i++) {
+  if (a[i].checked === true){ 
+    paciente.sexo = a[i].value;
+}
+}
+}*/
+//let genero = document.querySelectorAll(":radio");
+//genero.oninput = function () {
+//  var r = document.querySelector("input[name=Sexo]:checked").value;
+//  paciente.sexo = r;
+  let gender = Array.from(document.getElementsByName("Sexo")).find(r => r.checked).value;
+paciente.sexo = gender;
+//};
+
+//genero.onclick = function(){
+//let a="";
+//for(a of genero){
+//if a.
+//}
+//}
 /*2.1 validacion de run
 3. creacion de prescripcion
   // 3.1 calculo de edad : segun edad expresar en días, meses o años*/
