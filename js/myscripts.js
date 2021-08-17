@@ -90,8 +90,12 @@ var i="";
 //genero.oninput = function () {
 //  var r = document.querySelector("input[name=Sexo]:checked").value;
 //  paciente.sexo = r;
-  let gender = Array.from(document.getElementsByName("Sexo")).find(r => r.checked).value;
-paciente.sexo = gender;
+//@SMN947 -> Se añade listener a la web para tomar el genero solo cuando se cambia para evitar el error
+$(document).ready(function() {
+  $('input[type=radio][name="Sexo"]').change(function() {
+    paciente.sexo = $(this).val();
+  });
+});
 //};
 
 //genero.onclick = function(){
